@@ -126,3 +126,7 @@ bindkey -M menuselect 'l' vi-forward-char
 # Set rg as the default source for fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Set up fnm
+export PATH=/home/lmd/.fnm:$PATH
+eval "`fnm env`"
