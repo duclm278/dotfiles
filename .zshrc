@@ -112,7 +112,7 @@ ZVM_VI_EDITOR=nvim
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 
-# This zvm_after_init function will be auto executed by zsh-vi-mode
+# Solve the compatibility issue
 zvm_after_init() {
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 }
