@@ -13,9 +13,9 @@ inoremap <expr> <C-k> ("\<C-p>")
 vnoremap < <gv
 vnoremap > >gv
 
-" Move selected line / block of text in visual mode
-xnoremap K :move '<-2<CR>gv=gv
-xnoremap J :move '>+1<CR>gv=gv
+" Move selected line or block of text in visual mode
+vnoremap K :move '<-2<CR>gv=gv
+vnoremap J :move '>+1<CR>gv=gv
 
 " TAB in general mode will move to text buffer
 nnoremap <TAB> :bnext<CR>
@@ -36,3 +36,10 @@ nnoremap <M-l> :vertical resize +2<CR>
 
 " No highlight
 nnoremap <leader>n :nohlsearch<CR>
+
+" Better registers
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+vnoremap <leader>p "_dP
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d

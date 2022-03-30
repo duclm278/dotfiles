@@ -28,7 +28,7 @@ set splitbelow
 set splitright
 set cursorline
 set timeoutlen=500
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 
 set scrolloff=5
 set noswapfile
