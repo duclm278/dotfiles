@@ -1,10 +1,7 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["*"],
-
     // Python config
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
-    "python.jediEnabled": false,
 
     // Explorer config
     "explorer.width": 30,
