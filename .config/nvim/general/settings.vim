@@ -1,4 +1,5 @@
 syntax enable
+
 set number
 set relativenumber
 set laststatus=2
@@ -36,7 +37,7 @@ set noswapfile
 " set colorcolumn=+1
 
 " Stop new line continuation of comments
-au FileType * set fo-=c fo-=r fo-=o
+au BufEnter * set fo-=c fo-=r fo-=o
 
 " You can't stop me
 cmap w!! w !sudo tee %
