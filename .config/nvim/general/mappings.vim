@@ -13,13 +13,13 @@ inoremap <expr> <C-k> ("\<C-p>")
 vnoremap < <gv
 vnoremap > >gv
 
-" Move selected line or block of text in visual mode
-vnoremap K :move '<-2<CR>gv=gv
+" Move selected line or block of text
 vnoremap J :move '>+1<CR>gv=gv
+vnoremap K :move '<-2<CR>gv=gv
 
-" TAB in general mode will move to text buffer
+" Tab in normal mode will move to text buffer
 nnoremap <TAB> :bnext<CR>
-" SHIFT-TAB will go back
+" Shift + Tab will go back
 nnoremap <S-TAB> :bprevious<CR>
 
 " Better window navigation
@@ -28,18 +28,18 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Use alt + hjkl to resize windows
-nnoremap <M-j> :resize -2<CR>
-nnoremap <M-k> :resize +2<CR>
-nnoremap <M-h> :vertical resize -2<CR>
-nnoremap <M-l> :vertical resize +2<CR>
+" Use Alt + hjkl to resize windows
+nnoremap <A-h> <C-w><
+nnoremap <A-j> <C-w>-
+nnoremap <A-k> <C-w>+
+nnoremap <A-l> <C-w>>
 
 " No highlight
 nnoremap <leader>n :nohlsearch<CR>
 
 " Better registers
 nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-vnoremap <leader>p "_dP
 nnoremap <leader>d "_d
+vnoremap <leader>y "+y
 vnoremap <leader>d "_d
+xnoremap <leader>p "_dP

@@ -38,6 +38,3 @@ set noswapfile
 
 " Stop new line continuation of comments
 au BufEnter * set fo-=c fo-=r fo-=o
-
-" You can't stop me
-cmap w!! w !sudo tee %
