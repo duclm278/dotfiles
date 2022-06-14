@@ -8,7 +8,7 @@ vim.g.mapleader = " "
 keymap("", "<Space>", "<Nop>", opts)
 
 -- I hate escape more than anything else
-keymap("i", "jk", "<ESC>", opts)
+keymap("i", "jk", "<Esc>", opts)
 
 -- Move up and down in insert-mode completion
 keymap("i", "<C-j>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
@@ -31,8 +31,8 @@ keymap("v", "<A-j>", ":move '>+1<CR>gv=gv", opts)
 keymap("v", "<A-k>", ":move '<-2<CR>gv=gv", opts)
 
 -- Navigate buffers
-keymap("n", "<TAB>"  , ":bnext<CR>", opts)
-keymap("n", "<S-TAB>", ":bprevious<CR>", opts)
+keymap("n", "<Tab>"  , ":bnext<CR>", opts)
+keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -55,3 +55,8 @@ keymap("n", "<leader>y", '"+y', opts)
 keymap("v", "<leader>d", '"_d', opts)
 keymap("v", "<leader>p", '"_dP', opts)
 keymap("v", "<leader>y", '"+y', opts)
+
+-- Telescope
+-- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
+keymap("n", "<leader>f", ":lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opts)
+keymap("n", "<C-t>", ":Telescope live_grep<CR>", opts)
