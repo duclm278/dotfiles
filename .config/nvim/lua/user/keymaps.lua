@@ -58,5 +58,5 @@ keymap("v", "<leader>y", '"+y', opts)
 
 -- Telescope
 -- keymap("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<C-p>", ':lua require"telescope.builtin".find_files(require("telescope.themes").get_dropdown({ previewer = false }))<CR>', opts)
+keymap("n", "<C-p>", ':lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))<CR>', opts)
 keymap("n", "<A-f>", ":Telescope live_grep<CR>", opts)
