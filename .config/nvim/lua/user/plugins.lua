@@ -47,6 +47,7 @@ return packer.startup(function(use)
 
     -- Colorschemes
     use { "shaunsingh/nord.nvim" }
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Completions
     use "hrsh7th/nvim-cmp"                -- Core plugin
@@ -70,6 +71,9 @@ return packer.startup(function(use)
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
+
+    -- Treesitter
+    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
