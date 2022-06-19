@@ -13,9 +13,9 @@ configs.setup {
     -- List of parsers to ignore installing
     ignore_install = { "" },
 
-    -- autopairs = {
-    --     enable = true,
-    -- },
+    autopairs = {
+        enable = true,
+    },
 
     highlight = {
         -- Setting to `false` will disable the whole extension.
