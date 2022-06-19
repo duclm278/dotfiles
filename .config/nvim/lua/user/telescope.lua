@@ -93,3 +93,11 @@ telescope.setup {
         -- Please take a look at the README of the extension to configured.
     },
 }
+
+-- Custom keymaps
+local keymap = vim.keymap.set
+local opts = { silent = true }
+keymap("n", "<leader>fb", ":Telescope buffers<CR>"   , opts)
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>fp", ":Telescope projects<CR>"  , opts)
+keymap("n", "<leader>ft", ":Telescope live_grep<CR>" , opts)

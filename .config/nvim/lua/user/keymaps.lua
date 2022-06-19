@@ -1,7 +1,6 @@
-local opts = { noremap = true, silent = true }
-
--- Shorten name
-local keymap = vim.api.nvim_set_keymap
+-- Shorten stuff
+local keymap = vim.keymap.set
+local opts = { silent = true }
 
 -- Set leader key
 vim.g.mapleader = " "
@@ -11,14 +10,14 @@ keymap("", "<Space>", "<Nop>", opts)
 keymap("i", "jk", "<Esc>", opts)
 
 -- Move up and down in insert-mode completion
-keymap("i", "<C-k>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
-keymap("i", "<C-j>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
+keymap("i", "<C-k>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true })
+keymap("i", "<C-j>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true })
 
 -- Move up and down in cmdline-mode completion
-keymap("c", "<Up>"  , 'wildmenumode() ? "\\<C-p>" : "\\<Up>"'  , { expr = true, noremap = true })
-keymap("c", "<Down>", 'wildmenumode() ? "\\<C-n>" : "\\<Down>"', { expr = true, noremap = true })
-keymap("c", "<C-k>" , 'wildmenumode() ? "\\<C-p>" : "\\<C-k>"' , { expr = true, noremap = true })
-keymap("c", "<C-j>" , 'wildmenumode() ? "\\<C-n>" : "\\<C-j>"' , { expr = true, noremap = true })
+keymap("c", "<Up>"  , 'wildmenumode() ? "\\<C-p>" : "\\<Up>"'  , { expr = true })
+keymap("c", "<Down>", 'wildmenumode() ? "\\<C-n>" : "\\<Down>"', { expr = true })
+keymap("c", "<C-k>" , 'wildmenumode() ? "\\<C-p>" : "\\<C-k>"' , { expr = true })
+keymap("c", "<C-j>" , 'wildmenumode() ? "\\<C-n>" : "\\<C-j>"' , { expr = true })
 
 -- Better indenting
 keymap("v", "<", "<gv", opts)
@@ -57,8 +56,3 @@ keymap("n", "<leader>y", '"+y' , opts)
 keymap("v", "<leader>d", '"_d' , opts)
 keymap("v", "<leader>p", '"_dP', opts)
 keymap("v", "<leader>y", '"+y' , opts)
-
--- Telescope
--- keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>ff", ':lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))<CR>', opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
