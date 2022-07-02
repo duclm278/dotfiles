@@ -46,6 +46,8 @@ return packer.startup(function(use)
     use "nvim-lua/plenary.nvim"           -- Useful lua functions used by lots of plugins
     use "windwp/nvim-autopairs"
     use "numToStr/Comment.nvim"
+    use "kyazdani42/nvim-web-devicons"
+    use "kyazdani42/nvim-tree.lua"
 
     -- Colorschemes
     use { "shaunsingh/nord.nvim" }
