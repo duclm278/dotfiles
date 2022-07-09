@@ -65,7 +65,6 @@ nvim_tree.setup {
     },
 }
 
-
 -- Custom keymaps
 local keymap = vim.keymap.set
 local opts = { silent = true }

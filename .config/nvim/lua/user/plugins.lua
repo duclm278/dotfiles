@@ -74,6 +74,7 @@ return packer.startup(function(use)
     use "neovim/nvim-lspconfig"           -- Enable LSP
     use "williamboman/nvim-lsp-installer" -- Simple to use LSP installer
     use "RRethy/vim-illuminate"
+    use "jose-elias-alvarez/null-ls.nvim"
 
     -- SchemaStore
     use "b0o/schemastore.nvim"

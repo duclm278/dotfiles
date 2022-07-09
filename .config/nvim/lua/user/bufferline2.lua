@@ -12,28 +12,28 @@ bufferline.setup {
     },
     highlights = {
         buffer_selected = {
-            gui = "bold"
+            gui = "bold",
         },
         diagnostic_selected = {
-            gui = "bold"
+            gui = "bold",
         },
         info_selected = {
-            gui = "bold"
+            gui = "bold",
         },
         info_diagnostic_selected = {
-            gui = "bold"
+            gui = "bold",
         },
         warning_selected = {
-            gui = "bold"
+            gui = "bold",
         },
         warning_diagnostic_selected = {
-            gui = "bold"
+            gui = "bold",
         },
         error_selected = {
-            gui = "bold"
+            gui = "bold",
         },
         error_diagnostic_selected = {
-            gui = "bold"
+            gui = "bold",
         },
         duplicate_selected = {
             gui = "none",
@@ -45,13 +45,13 @@ bufferline.setup {
             gui = "none",
         },
         pick_selected = {
-            gui = "bold"
+            gui = "bold",
         },
         pick_visible = {
-            gui = "bold"
+            gui = "bold",
         },
         pick = {
-            gui = "bold"
+            gui = "bold",
         },
-    }
+    },
 }
