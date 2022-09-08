@@ -11,11 +11,11 @@ comment.setup {
             local U = require "Comment.utils"
 
             -- Determine whether to use linewise or blockwise commentstring
-            local type = ctx.ctype == U.ctype.line and "__default" or "__multiline"
+            local type = ctx.ctype == U.ctype.linewise and "__default" or "__multiline"
 
             -- Determine the location where to calculate commentstring from
             local location = nil
-            if ctx.ctype == U.ctype.block then
+            if ctx.ctype == U.ctype.blockwise then
                 location = require("ts_context_commentstring.utils").get_cursor_location()
             elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
                 location = require("ts_context_commentstring.utils").get_visual_start_location()
@@ -31,5 +31,5 @@ comment.setup {
 
 -- Custom keymaps
 local keymap = vim.keymap.set
-keymap("n", "<C-_>", '<Cmd>lua require("Comment.api").toggle_current_linewise()<CR>')
-keymap("v", "<C-_>", '<Esc><Cmd>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
+keymap("n", "<C-_>", "<Plug>(comment_toggle_linewise_current)")
+keymap("v", "<C-_>", "<Plug>(comment_toggle_linewise_visual)")

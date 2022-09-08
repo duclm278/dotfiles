@@ -12,46 +12,57 @@ bufferline.setup {
     },
     highlights = {
         buffer_selected = {
-            gui = "bold",
+            bold = true,
+            italic = false,
         },
         diagnostic_selected = {
-            gui = "bold",
+            bold = true,
+            italic = false,
         },
         info_selected = {
-            gui = "bold",
+            bold = true,
+            italic = false,
         },
         info_diagnostic_selected = {
-            gui = "bold",
+            bold = true,
+            italic = false,
         },
         warning_selected = {
-            gui = "bold",
+            bold = true,
+            italic = false,
         },
         warning_diagnostic_selected = {
-            gui = "bold",
+            bold = true,
+            italic = false,
         },
         error_selected = {
-            gui = "bold",
+            bold = true,
+            italic = false,
         },
         error_diagnostic_selected = {
-            gui = "bold",
+            bold = true,
+            italic = false,
         },
         duplicate_selected = {
-            gui = "none",
+            italic = false,
         },
         duplicate_visible = {
-            gui = "none",
+            italic = false,
         },
         duplicate = {
-            gui = "none",
+            italic = false,
         },
         pick_selected = {
-            gui = "bold",
+            bold = true,
+            italic = false,
         },
         pick_visible = {
-            gui = "bold",
+            bold = true,
+            italic = false,
         },
         pick = {
-            gui = "bold",
+            bold = true,
+            italic = false,
         },
     },
 }
