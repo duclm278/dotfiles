@@ -1,6 +1,6 @@
 " Set leader key
 let mapleader=" "
-nnoremap <Space> <Nop>
+noremap <Space> <Nop>
 
 " I hate escape more than anything else
 inoremap jk <Esc>
