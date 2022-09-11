@@ -10,6 +10,9 @@ configs.setup {
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
 
+    -- Automatically install missing parsers when entering buffer
+    auto_install = true,
+
     -- List of parsers to ignore installing
     ignore_install = { "" },
 
@@ -24,7 +27,7 @@ configs.setup {
         -- List of language that will be disabled
         disable = { "" },
 
-        additional_vim_regex_highlighting = true,
+        additional_vim_regex_highlighting = false,
     },
 
     indent = { enable = true, disable = { "python" } },
