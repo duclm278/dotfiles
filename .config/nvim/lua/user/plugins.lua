@@ -58,7 +58,6 @@ return packer.startup(function(use)
 
     -- Colorschemes
     use { "shaunsingh/nord.nvim" }
-    use { "andersevenrud/nordic.nvim" }
     use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Completions

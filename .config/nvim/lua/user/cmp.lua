@@ -41,7 +41,7 @@ local kind_icons = {
     Struct = "פּ",
     Event = "",
     Operator = "",
-    TypeParameter = "",
+    TypeParameter = ""
 }
 
 cmp.setup {
@@ -102,8 +102,8 @@ cmp.setup {
             vim_item.menu = ({
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[Nvim]",
-                luasnip = "[Snippet]",
-                buffer = "[Buffer]",
+                luasnip = "[Snip]",
+                buffer = "[Buff]",
                 path = "[Path]",
             })[entry.source.name]
             return vim_item
