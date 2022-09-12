@@ -8,41 +8,17 @@ if not snip_status_ok then
     return
 end
 
+local kind_status_ok, lspkind = pcall(require, "lspkind")
+if not kind_status_ok then
+    return
+end
+
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
     local col = vim.fn.col "." - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
-
--- Good icons
-local kind_icons = {
-    Text = "",
-    Method = "",
-    Function = "",
-    Constructor = "",
-    Field = "ﰠ",
-    Variable = "",
-    Class = "ﴯ",
-    Interface = "",
-    Module = "",
-    Property = "ﰠ",
-    Unit = "塞",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "",
-    Constant = "",
-    Struct = "פּ",
-    Event = "",
-    Operator = "",
-    TypeParameter = ""
-}
 
 cmp.setup {
     snippet = {
@@ -96,18 +72,18 @@ cmp.setup {
     },
     formatting = {
         fields = { "kind", "abbr", "menu" },
-        format = function(entry, vim_item)
-            -- Kind icons
-            vim_item.kind = kind_icons[vim_item.kind]
-            vim_item.menu = ({
-                nvim_lsp = "[LSP]",
-                nvim_lua = "[Nvim]",
-                luasnip = "[Snip]",
-                buffer = "[Buff]",
-                path = "[Path]",
-            })[entry.source.name]
-            return vim_item
-        end,
+        format = lspkind.cmp_format({
+            mode = "symbol",     -- Options: "text", "text_symbol", "symbol_text", "symbol"
+            maxwidth = 50,       -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            preset = "codicons", -- Options: "default", "codicons"
+
+            before = function (entry, vim_item)
+                vim_item.menu = ({
+                    nvim_lsp = "[LSP]", nvim_lua = "[Nvim]", luasnip = "[Snip]", buffer = "[Buff]", path = "[Path]",
+                })[entry.source.name]
+                return vim_item
+            end,
+        })
     },
     sources = {
         { name = "nvim_lsp" },
