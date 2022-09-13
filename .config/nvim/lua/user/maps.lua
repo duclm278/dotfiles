@@ -6,7 +6,7 @@ local opts = { silent = true }
 vim.g.mapleader = " "
 keymap("", "<Space>", "<Nop>", opts)
 
--- I hate escape more than anything else
+-- I hate Escape more than anything else
 keymap("i", "jk", "<Esc>", opts)
 
 -- Move up and down in insert-mode completion
@@ -32,8 +32,8 @@ keymap("v", "<A-k>", ":move '<-2<CR>gv=gv", opts)
 keymap("v", "<A-j>", ":move '>+1<CR>gv=gv", opts)
 
 -- Navigate buffers
-keymap("n", "<Tab>"  , ":bnext<CR>", opts)
-keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
+-- keymap("n", "<S-l>", ":bnext<CR>", opts)
+-- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -47,12 +47,10 @@ keymap("n", "<C-Down>" , ":resize -2<CR>", opts)
 keymap("n", "<C-Up>"   , ":resize +2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- No highlight
+-- Remove highlights
 keymap("n", "<leader>n", ":nohlsearch<CR>", opts)
 
--- Great tricks
-keymap("n", "<leader>d", '"_d' , opts)
-keymap("n", "<leader>y", '"+y' , opts)
-keymap("v", "<leader>d", '"_d' , opts)
+-- Better operations
 keymap("v", "<leader>p", '"_dP', opts)
-keymap("v", "<leader>y", '"+y' , opts)
+keymap({ "n", "v" }, "<leader>d", '"_d', opts)
+keymap({ "n", "v" }, "<leader>y", '"+y', opts)

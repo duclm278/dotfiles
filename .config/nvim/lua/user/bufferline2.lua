@@ -66,3 +66,11 @@ bufferline.setup {
         },
     },
 }
+
+-- Custom keymaps
+local keymap = vim.keymap.set
+local opts = { silent = true }
+keymap("n", "<A-l>", ":BufferLineMoveNext<CR>" , opts)
+keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "<A-h>", ":BufferLineMovePrev<CR>" , opts)
+keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
