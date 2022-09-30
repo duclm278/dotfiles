@@ -130,6 +130,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Set up pip
 export PATH="$HOME/.local/bin:$PATH"
 
+# Set up cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Set up fnm
 export PATH="$HOME/.fnm:$PATH"
 eval "`fnm env`"
