@@ -7,19 +7,19 @@ end
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 catppuccin.setup {
     styles = {
-		comments = { "italic" },
-		conditionals = { "bold" },
-		loops = { "bold" },
-		functions = {},
-		keywords = { "bold" },
-		strings = {},
-		variables = {},
-		numbers = {},
-		booleans = {},
-		properties = {},
-		types = {},
-		operators = { "bold" },
-	},
+        comments = { "italic" },
+        conditionals = { "bold" },
+        loops = { "bold" },
+        functions = {},
+        keywords = { "bold" },
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = { "bold" },
+    },
 }
 
 -- Colorscheme
@@ -31,6 +31,6 @@ if not colorscheme_ok then
     return
 end
 
-if vim.fn.has("termguicolors") then
+if vim.fn.has "termguicolors" then
     vim.opt.termguicolors = true
 end

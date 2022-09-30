@@ -13,6 +13,6 @@ if not colorscheme_ok then
     return
 end
 
-if vim.fn.has("termguicolors") then
+if vim.fn.has "termguicolors" then
     vim.opt.termguicolors = true
 end

@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 -- default configuration
-illuminate.configure({
+illuminate.configure {
     -- providers: provider used to get references in the buffer, ordered by priority
     providers = {
         "lsp",
@@ -43,4 +43,4 @@ illuminate.configure({
     providers_regex_syntax_allowlist = {},
     -- under_cursor: whether or not to illuminate under the cursor
     under_cursor = true,
-})
+}
