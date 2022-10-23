@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 -- Settings
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "mocha"
 catppuccin.setup {
     styles = {
         comments = { "italic" },

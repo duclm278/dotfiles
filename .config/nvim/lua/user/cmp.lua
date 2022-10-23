@@ -23,7 +23,7 @@ end
 cmp.setup {
     snippet = {
         expand = function(args)
-            luasnip.lsp_expand(args.body) -- For `luasnip` users.
+            luasnip.lsp_expand(args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert {
@@ -73,28 +73,20 @@ cmp.setup {
     formatting = {
         fields = { "kind", "abbr", "menu" },
         format = lspkind.cmp_format {
-            mode = "symbol", -- Options: "text", "text_symbol", "symbol_text", "symbol"
-            maxwidth = 50, -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            mode = "symbol",     -- Options: "text", "text_symbol", "symbol_text", "symbol"
+            maxwidth = 50,       -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             preset = "codicons", -- Options: "default", "codicons"
 
             before = function(entry, vim_item)
                 vim_item.menu = ({
-                    nvim_lsp = "[LSP]",
-                    nvim_lua = "[Nvim]",
-                    luasnip = "[Snip]",
-                    buffer = "[Buff]",
-                    path = "[Path]",
+                    nvim_lsp = "[LSP]", nvim_lua = "[Nvim]", luasnip = "[Snip]", buffer = "[Buff]", path = "[Path]",
                 })[entry.source.name]
                 return vim_item
             end,
         },
     },
     sources = {
-        { name = "nvim_lsp" },
-        { name = "nvim_lua" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "path" },
+        { name = "nvim_lsp" }, { name = "nvim_lua" }, { name = "luasnip" }, { name = "buffer" }, { name = "path" },
     },
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
