@@ -32,8 +32,8 @@ keymap("v", "<A-k>", ":move '<-2<CR>gv=gv", opts)
 keymap("v", "<A-j>", ":move '>+1<CR>gv=gv", opts)
 
 -- Navigate buffers
--- keymap("n", "<S-l>", ":bnext<CR>", opts)
--- keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)

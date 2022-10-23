@@ -77,7 +77,8 @@ return packer.startup(function(use)
 
     -- LSP
     use "neovim/nvim-lspconfig"           -- Enable LSP
-    use "williamboman/nvim-lsp-installer" -- Simple to use LSP installer
+    use "williamboman/mason.nvim"
+    use "williamboman/mason-lspconfig.nvim"
     use "RRethy/vim-illuminate"
     use "jose-elias-alvarez/null-ls.nvim"
 

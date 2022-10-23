@@ -12,7 +12,7 @@ local diagnostics = {
 local diff = {
     "diff",
     colored = false,
-    symbols = { added = "", modified = "", removed = "" }, -- Changes diff symbols
+    symbols = { added = "", modified = "", removed = "" },
     cond = function()
         return vim.fn.winwidth(0) > 80
     end,

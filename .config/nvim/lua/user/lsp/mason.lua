@@ -1,5 +1,10 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not status_ok then
+local mason1_status_ok, mason = pcall(require, "mason")
+if not mason1_status_ok then
+    return
+end
+
+local mason2_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason2_status_ok then
     return
 end
 
@@ -10,8 +15,23 @@ local servers = {
     "sumneko_lua",
 }
 
-lsp_installer.setup {
+local settings = {
+    ui = {
+        border = "rounded",
+        icons = {
+            package_installed = "◍",
+            package_pending = "◍",
+            package_uninstalled = "◍",
+        },
+    },
+    log_level = vim.log.levels.INFO,
+    max_concurrent_installers = 4,
+}
+
+mason.setup(settings)
+mason_lspconfig.setup {
     ensure_installed = servers,
+    automatic_installation = true,
 }
 
 for _, server in pairs(servers) do
@@ -19,6 +39,8 @@ for _, server in pairs(servers) do
         on_attach = require("user.lsp.handlers").on_attach,
         capabilities = require("user.lsp.handlers").capabilities,
     }
+
+    server = vim.split(server, "@")[1]
 
     if server == "jsonls" then
         local jsonls_opts = require "user.lsp.settings.jsonls"

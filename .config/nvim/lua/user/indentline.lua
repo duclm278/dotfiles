@@ -5,12 +5,6 @@ end
 
 indent_blankline.setup {
     -- char = "▏",
-    buftype_exclude = { "terminal", "nofile" },
-    filetype_exclude = {
-        "help",
-        "packer",
-        "NvimTree",
-    },
     show_current_context = true,
     show_first_indent_level = true,
     show_trailing_blankline_indent = false,
