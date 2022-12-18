@@ -107,15 +107,13 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Better vi-mode
+# Set up vi-mode
 ZVM_VI_EDITOR=nvim
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 
-# Solve the compatibility issue
-zvm_after_init() {
-    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-}
+# Set up fzf
+zvm_after_init_commands+=("[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh")
 
 # Use the vi navigation keys in menu completion
 bindkey -M menuselect 'h' vi-backward-char
