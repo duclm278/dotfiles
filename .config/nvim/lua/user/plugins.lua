@@ -44,49 +44,18 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim"          -- Have packer manage itself
     use "nvim-lua/popup.nvim"             -- An implementation of the popup API from vim in neovim
     use "nvim-lua/plenary.nvim"           -- Useful lua functions used by lots of plugins
-    use "windwp/nvim-autopairs"
     use "numToStr/Comment.nvim"
     use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
     use "akinsho/bufferline.nvim"
     use "moll/vim-bbye"
     use "nvim-lualine/lualine.nvim"
-    use "akinsho/toggleterm.nvim"
-    use "ahmedkhalf/project.nvim"
-    use "lewis6991/impatient.nvim"
     use "lukas-reineke/indent-blankline.nvim"
     use "machakann/vim-highlightedyank"
 
     -- Colorschemes
     use { "shaunsingh/nord.nvim" }
     use { "catppuccin/nvim", as = "catppuccin" }
-
-    -- Completions
-    use "hrsh7th/nvim-cmp"                -- Core plugin
-    use "hrsh7th/cmp-buffer"              -- Buffer completions
-    use "hrsh7th/cmp-path"                -- Path completions
-    use "hrsh7th/cmp-cmdline"             -- Cmdline completions
-    use "saadparwaiz1/cmp_luasnip"        -- Snippet completions
-    use "hrsh7th/cmp-nvim-lsp"            -- LSP completions
-    use "hrsh7th/cmp-nvim-lua"            -- Better Nvim completions
-    use "onsails/lspkind.nvim"            -- VSCode pictograms
-
-    -- Snippets
-    use "L3MON4D3/LuaSnip"                -- Snippet engine
-    use "rafamadriz/friendly-snippets"    -- A bunch of snippets to use
-
-    -- LSP
-    use "neovim/nvim-lspconfig"           -- Enable LSP
-    use "williamboman/mason.nvim"
-    use "williamboman/mason-lspconfig.nvim"
-    use "RRethy/vim-illuminate"
-    use "jose-elias-alvarez/null-ls.nvim"
-
-    -- SchemaStore
-    use "b0o/schemastore.nvim"
-
-    -- Telescope
-    use "nvim-telescope/telescope.nvim"
 
     -- Treesitter
     use {
