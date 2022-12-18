@@ -134,5 +134,5 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Set up fnm
-export PATH="$HOME/.fnm:$PATH"
+export PATH="/home/lmd/.local/share/fnm:$PATH"
 eval "`fnm env`"
