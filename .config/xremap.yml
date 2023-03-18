@@ -12,4 +12,6 @@ keymap:
       CapsLock-l: Right
 
       CapsLock-Space: CapsLock
+      CapsLock-Comma: Ctrl-Shift-Tab
+      CapsLock-Dot: Ctrl-Tab
 
