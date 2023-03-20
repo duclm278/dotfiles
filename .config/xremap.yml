@@ -1,7 +1,18 @@
 virtual_modifiers:
   - CapsLock
 keymap:
-  - remap:
+  - name: Super
+    remap:
+      Super-j: Super-Down
+      Super-k: Super-Up
+      Super-Ctrl-h: Super-PageUp
+      Super-Ctrl-l: Super-PageDown
+      Super-Ctrl-Shift-h: Super-Shift-PageUp
+      Super-Ctrl-Shift-l: Super-Shift-PageDown
+      Super-Shift-q: Alt-F4
+
+  - name: CapsLock
+    remap:
       CapsLock-a: Home
       CapsLock-e: End
 
