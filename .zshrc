@@ -115,13 +115,13 @@ ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 # Set up fzf
 zvm_after_init_commands+=("[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh")
 
-# Use the vi navigation keys in menu completion
+# Use vi navigation keys in menu completion
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
-# Set rg as the default source for fzf
+# Set rg as default source for fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -129,7 +129,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Set up cargo
-export PATH="$HOME/.cargo/bin:$PATH"
+# export PATH="$HOME/.cargo/bin:$PATH"
 
 # Set up fnm
 export PATH="$HOME/.local/share/fnm:$PATH"
