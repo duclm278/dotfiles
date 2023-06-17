@@ -41,9 +41,9 @@ packer.init {
 -- Install your plugins here
 return packer.startup(function(use)
     -- My plugins here
-    use "wbthomason/packer.nvim"          -- Have packer manage itself
-    use "nvim-lua/popup.nvim"             -- An implementation of the popup API from vim in neovim
-    use "nvim-lua/plenary.nvim"           -- Useful lua functions used by lots of plugins
+    use "wbthomason/packer.nvim" -- Have packer manage itself
+    use "nvim-lua/popup.nvim" -- An implementation of the popup API from vim in neovim
+    use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
     use "numToStr/Comment.nvim"
     use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
@@ -64,7 +64,10 @@ return packer.startup(function(use)
             require("nvim-treesitter.install").update { with_sync = true }
         end,
     }
-    use "JoosepAlviste/nvim-ts-context-commentstring"
+    use {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        after = "nvim-treesitter",
+    }
 
     -- Git
     use "lewis6991/gitsigns.nvim"
