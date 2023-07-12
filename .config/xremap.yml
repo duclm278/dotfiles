@@ -5,6 +5,8 @@ keymap:
     remap:
       Super-j: Super-Down
       Super-k: Super-Up
+      Super-v:
+        launch: ["copyq", "toggle"]
       Super-Ctrl-h: Super-PageUp
       Super-Ctrl-l: Super-PageDown
       Super-Ctrl-Shift-h: Super-Shift-PageUp
