@@ -5,13 +5,15 @@ keymap:
     remap:
       Super-j: Super-Down
       Super-k: Super-Up
-      Super-v:
-        launch: ["copyq", "toggle"]
       Super-Ctrl-h: Super-PageUp
       Super-Ctrl-l: Super-PageDown
       Super-Ctrl-Shift-h: Super-Shift-PageUp
       Super-Ctrl-Shift-l: Super-Shift-PageDown
+      Super-Shift-m:
+        launch: ["gnome-terminal", "--", "bottom"]
       Super-Shift-q: Alt-F4
+      Super-Shift-v:
+        launch: ["copyq", "toggle"]
 
   - name: CapsLock
     remap:
@@ -27,4 +29,9 @@ keymap:
       CapsLock-Space: CapsLock
       CapsLock-Comma: Ctrl-Shift-Tab
       CapsLock-Dot: Ctrl-Tab
+
+  - name: Ctrl-Shift
+    remap:
+      Ctrl-Shift-Esc:
+        launch: ["gnome-terminal", "--", "bottom"]
 
