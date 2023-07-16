@@ -13,7 +13,9 @@
  * gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/Extensions/Sizer --method org.gnome.Shell.Extensions.Sizer.Call 0 0 1600 900
  */
 
-const { Gio } = imports.gi;
+const { Gio, GLib, Meta } = imports.gi;
+
+const Main = imports.ui.main;
 
 const MR_DBUS_IFACE = `
 <node>
@@ -40,13 +42,14 @@ class Extension {
   }
 
   Call(x, y, width, height) {
-    const win = global
-      .get_window_actors()
-      .map((a) => a.meta_window)
-      .find((w) => w.has_focus());
-    if (win) {
-      win.move_resize_frame(0, x, y, width, height);
+    const window = global.display.get_focus_window();
+    if (!window) return;
+
+    if (window.get_maximized() !== 0) {
+      window.unmaximize(Meta.MaximizeFlags.BOTH);
     }
+
+    window.move_resize_frame(0, x, y, width, height);
   }
 }
 
