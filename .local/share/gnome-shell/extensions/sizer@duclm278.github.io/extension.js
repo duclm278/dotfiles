@@ -92,7 +92,7 @@ class Extension {
       newInnerRect.width / scaleFactor,
       newInnerRect.height / scaleFactor
     );
-    message += "Outer: %dx%d\n".format(
+    message += "Outer: %dx%d".format(
       newOuterRect.width / scaleFactor,
       newOuterRect.height / scaleFactor
     );
