@@ -7,13 +7,19 @@ keymap:
       Super-k: Super-Up
       Super-Ctrl-h: Super-PageUp
       Super-Ctrl-l: Super-PageDown
+      Super-Ctrl-Left: Super-PageUp
+      Super-Ctrl-Right: Super-PageDown
+      Super-Ctrl-z:
+        launch: ["bash", "-c", "gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/Extensions/Sizer --method org.gnome.Shell.Extensions.Sizer.Get"]
       Super-Ctrl-Shift-h: Super-Shift-PageUp
       Super-Ctrl-Shift-l: Super-Shift-PageDown
       Super-Shift-m:
-        launch: ["gnome-terminal", "--", "bottom"]
+        launch: ["bash", "-c", "gnome-terminal -- htop"]
       Super-Shift-q: Alt-F4
+      Super-Shift-r:
+        launch: ["bash", "-c", "systemctl daemon-reload && systemctl --user restart xremap"]
       Super-Shift-v:
-        launch: ["copyq", "toggle"]
+        launch: ["bash", "-c", "copyq toggle"]
 
   - name: CapsLock
     remap:
@@ -33,5 +39,5 @@ keymap:
   - name: Ctrl-Shift
     remap:
       Ctrl-Shift-Esc:
-        launch: ["gnome-terminal", "--", "bottom"]
+        launch: ["bash", "-c", "gnome-terminal -- htop"]
 
