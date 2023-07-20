@@ -1,11 +1,3 @@
 {
-  "cSpell.words": [
-    "dbus",
-    "duclm278",
-    "fmuellner",
-    "gdbus",
-    "orzun",
-    "unexport",
-    "unmaximize"
-  ]
+  "cSpell.words": ["dbus", "gdbus", "unexport", "unmaximize"]
 }
