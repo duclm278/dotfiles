@@ -11,7 +11,7 @@ keymap:
             --method dev.duc.Sizer.Get",
           ]
       Super-Shift-m:
-        launch: ["sh", "-c", "gnome-terminal -- btm"]
+        launch: ["sh", "-c", "alacritty -e btm"]
       Super-Shift-q: Alt-F4
       Super-Shift-r:
         launch:
@@ -86,4 +86,4 @@ keymap:
   - name: Ctrl-Shift
     remap:
       Ctrl-Shift-Esc:
-        launch: ["sh", "-c", "gnome-terminal -- btm"]
+        launch: ["sh", "-c", "alacritty -e btm"]
