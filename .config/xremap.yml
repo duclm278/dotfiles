@@ -3,12 +3,6 @@ virtual_modifiers:
 keymap:
   - name: Super
     remap:
-      Super-j: Super-Down
-      Super-k: Super-Up
-      Super-Ctrl-h: Super-PageUp
-      Super-Ctrl-l: Super-PageDown
-      Super-Ctrl-Left: Super-PageUp
-      Super-Ctrl-Right: Super-PageDown
       Super-Ctrl-z:
         launch: [
             "sh",
@@ -16,8 +10,6 @@ keymap:
             "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
             --method dev.duc.Sizer.Get",
           ]
-      Super-Ctrl-Shift-h: Super-Shift-PageUp
-      Super-Ctrl-Shift-l: Super-Shift-PageDown
       Super-Shift-m:
         launch: ["sh", "-c", "gnome-terminal -- btm"]
       Super-Shift-q: Alt-F4
@@ -83,19 +75,12 @@ keymap:
             "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
             --method dev.duc.Sizer.Resize 890 550",
           ]
-      Shift-Alt-w:
-        launch: [
-            "sh",
-            "-c",
-            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.Resize 980 817",
-          ]
       Shift-Alt-x:
         launch: [
             "sh",
             "-c",
             "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.MoveResizeInWorkArea 40 36 1257 966",
+            --method dev.duc.Sizer.MoveResizeInWorkArea 40 36 1257 952",
           ]
 
   - name: Ctrl-Shift
