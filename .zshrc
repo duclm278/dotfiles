@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -127,8 +127,8 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 
 # Set up fzf
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-zvm_after_init_commands+=("[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh")
+# [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+zvm_after_init_commands+=("[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh")
 
 # Use vi navigation keys in menu completion
 bindkey -M menuselect 'h' vi-backward-char
@@ -141,7 +141,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Set up snap
-export PATH="/snap/bin:$PATH"
+# export PATH="$PATH:/snap/bin"
 
 # Set up cargo
 # export PATH="$HOME/.cargo/bin:$PATH"
@@ -149,3 +149,6 @@ export PATH="/snap/bin:$PATH"
 # Set up fnm
 export PATH="$HOME/.local/share/fnm:$PATH"
 eval "`fnm env`"
+
+# Set up proxy
+zvm_after_init_commands+=("[[ -f ~/.proxy.zsh ]] && source ~/.proxy.zsh")
