@@ -140,6 +140,9 @@ bindkey -M menuselect 'l' vi-forward-char
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# Set up bob
+export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+
 # Set up snap
 # export PATH="$PATH:/snap/bin"
 
