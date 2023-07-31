@@ -147,8 +147,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # export PATH="$HOME/.cargo/bin:$PATH"
 
 # Set up fnm
-export PATH="$HOME/.local/share/fnm:$PATH"
-eval "`fnm env`"
+# export PATH="$HOME/.local/share/fnm:$PATH"
+# eval "`fnm env`"
 
 # Set up proxy
 # zvm_after_init_commands+=("[[ -f ~/.proxy.zsh ]] && source ~/.proxy.zsh")
