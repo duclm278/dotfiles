@@ -154,4 +154,4 @@ export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 # eval "`fnm env`"
 
 # Set up proxy
-# zvm_after_init_commands+=("[[ -f ~/.proxy.zsh ]] && source ~/.proxy.zsh")
+zvm_after_init_commands+=("[[ -f ~/.proxy.zsh ]] && source ~/.proxy.zsh")
