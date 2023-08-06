@@ -29,7 +29,7 @@ keymap:
     remap:
       CapsLock-a: Home
       CapsLock-e: End
-      CapsLock-RightBrace: Esc
+      CapsLock-LeftBrace: Esc
       CapsLock-h: Left
       CapsLock-j: Down
       CapsLock-k: Up
