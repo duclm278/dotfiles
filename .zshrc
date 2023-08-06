@@ -153,5 +153,11 @@ export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 # export PATH="$HOME/.local/share/fnm:$PATH"
 # eval "`fnm env`"
 
+# Of g-install: do NOT edit, see https://github.com/stefanmaric/g
+export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH";
+
+# Of g-install: do NOT edit, see https://github.com/stefanmaric/g
+alias ggovm="$GOPATH/bin/g";
+
 # Set up proxy
 zvm_after_init_commands+=("[[ -f ~/.proxy.zsh ]] && source ~/.proxy.zsh")
