@@ -35,6 +35,8 @@ keymap:
       CapsLock-k: Up
       CapsLock-l: Right
       CapsLock-Space: CapsLock
+      CapsLock-Dot: Ctrl-Tab
+      CapsLock-Comma: Ctrl-Shift-Tab
 
   - name: Shift-Alt
     remap:
