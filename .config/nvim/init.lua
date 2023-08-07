@@ -1,13 +1,2 @@
-require "user.opts"
-require "user.maps"
-require "user.plugins"
--- require "user.nord"
-require "user.catppuccin"
-require "user.treesitter"
-require "user.comment"
-require "user.gitsigns2"
-require "user.nvim-tree"
-require "user.bufferline2"
-require "user.lualine2"
-require "user.indentline"
-require "user.highlighted"
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
