@@ -84,7 +84,28 @@ keymap:
             "sh",
             "-c",
             "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.MoveResizeInWorkArea 40 36 1257 952",
+            --method dev.duc.Sizer.MoveResizeInWorkArea 16 16 1297 988",
+          ]
+      Shift-Alt-b:
+        launch: [
+            "sh",
+            "-c",
+            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
+            --method dev.duc.Sizer.Resize 1416 875",
+          ]
+      Shift-Alt-m:
+        launch: [
+            "sh",
+            "-c",
+            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
+            --method dev.duc.Sizer.Resize 1214 750",
+          ]
+      Shift-Alt-s:
+        launch: [
+            "sh",
+            "-c",
+            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
+            --method dev.duc.Sizer.Resize 1011 625",
           ]
 
   - name: Ctrl-Shift
