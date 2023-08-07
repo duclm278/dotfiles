@@ -3,8 +3,14 @@ virtual_modifiers:
 keymap:
   - name: Super
     remap:
-      Super-Dot: Ctrl-Tab
-      Super-Comma: Ctrl-Shift-Tab
+      Super-h: Super-Left
+      Super-j: Super-Down
+      Super-k: Super-Up
+      Super-l: Super-Right
+      Super-Ctrl-h: Super-PageUp
+      Super-Ctrl-Left: Super-PageUp
+      Super-Ctrl-l: Super-PageDown
+      Super-Ctrl-Right: Super-PageDown
       Super-Ctrl-z:
         launch: [
             "sh",
@@ -35,8 +41,6 @@ keymap:
       CapsLock-k: Up
       CapsLock-l: Right
       CapsLock-Space: CapsLock
-      CapsLock-Dot: Ctrl-Tab
-      CapsLock-Comma: Ctrl-Shift-Tab
 
   - name: Shift-Alt
     remap:
