@@ -1,16 +1,14 @@
 virtual_modifiers:
   - CapsLock
+modmap:
 keymap:
   - name: Super
+    exact_match: true
     remap:
       Super-h: Super-Left
       Super-j: Super-Down
       Super-k: Super-Up
       Super-l: Super-Right
-      Super-Ctrl-h: Super-PageUp
-      Super-Ctrl-Left: Super-PageUp
-      Super-Ctrl-l: Super-PageDown
-      Super-Ctrl-Right: Super-PageDown
       Super-Ctrl-z:
         launch: [
             "sh",
@@ -31,18 +29,32 @@ keymap:
       Super-Shift-v:
         launch: ["sh", "-c", "copyq toggle"]
 
+  - name: Super
+    exact_match: false
+    remap:
+      Super-Ctrl-h: Super-PageUp
+      Super-Ctrl-Left: Super-PageUp
+      Super-Ctrl-l: Super-PageDown
+      Super-Ctrl-Right: Super-PageDown
+
   - name: CapsLock
+    exact_match: true
+    remap:
+      CapsLock-LeftBrace: Esc
+      CapsLock-Space: CapsLock
+
+  - name: CapsLock
+    exact_match: false
     remap:
       CapsLock-a: Home
       CapsLock-e: End
-      CapsLock-LeftBrace: Esc
       CapsLock-h: Left
       CapsLock-j: Down
       CapsLock-k: Up
       CapsLock-l: Right
-      CapsLock-Space: CapsLock
 
   - name: Shift-Alt
+    exact_match: true
     remap:
       Shift-Alt-1:
         launch: [
@@ -109,6 +121,7 @@ keymap:
           ]
 
   - name: Ctrl-Shift
+    exact_match: true
     remap:
       Ctrl-Shift-Esc:
         launch: ["sh", "-c", "alacritty -e btop"]
