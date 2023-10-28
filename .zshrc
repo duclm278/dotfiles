@@ -117,10 +117,6 @@ export EDITOR="nvim"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-zvm_after_init_commands+=("[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh")
-
 # Set up vi-mode
 ZVM_VI_EDITOR=nvim
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
@@ -129,6 +125,13 @@ ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 # Set up fzf
 # [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 zvm_after_init_commands+=("[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh")
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+zvm_after_init_commands+=("[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh")
+
+# Set up proxy
+zvm_after_init_commands+=("[[ -f ~/.proxy.zsh ]] && source ~/.proxy.zsh")
 
 # Use vi navigation keys in menu completion
 bindkey -M menuselect "h" vi-backward-char
@@ -146,6 +149,24 @@ export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 # Set up snap
 # export PATH="$PATH:/snap/bin"
 
+# Set up anaconda
+# export PATH="/home/duc/anaconda3/bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/duc/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/duc/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/duc/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/duc/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
 # Set up cargo
 # export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -159,5 +180,7 @@ export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$P
 # Of g-install: do NOT edit, see https://github.com/stefanmaric/g
 alias ggovm="$GOPATH/bin/g";
 
-# Set up proxy
-zvm_after_init_commands+=("[[ -f ~/.proxy.zsh ]] && source ~/.proxy.zsh")
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+# [[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source ~/.sdkman/bin/sdkman-init.sh
+zvm_after_init_commands+=("[[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source ~/.sdkman/bin/sdkman-init.sh")
