@@ -86,6 +86,7 @@ plugins=(
   zsh-vi-mode
   docker
   kubectl
+  helm
 )
 
 source $ZSH/oh-my-zsh.sh
