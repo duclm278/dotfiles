@@ -8,85 +8,24 @@
 # ALACRITTY CONFIG (~/.config/alacritty/alacritty.yml)
 # ----------------------------------------------------
 
-# Colors
-colors:
-  primary:
-    background: "#1E1E2E" # base
-    foreground: "#CDD6F4" # text
-    # Bright and dim foreground colors
-    dim_foreground: "#CDD6F4" # text
-    bright_foreground: "#CDD6F4" # text
+env:
+  # Fix font scaling
+  WINIT_X11_SCALE_FACTOR: "1.0"
 
-    # Cursor colors
-  cursor:
-    text: "#1E1E2E" # base
-    cursor: "#F5E0DC" # rosewater
-  vi_mode_cursor:
-    text: "#1E1E2E" # base
-    cursor: "#B4BEFE" # lavender
+window:
+  # Window dimensions in character columns and lines
+  dimensions:
+    columns: 80
+    lines: 24
 
-    # Search colors
-  search:
-    matches:
-      foreground: "#1E1E2E" # base
-      background: "#A6ADC8" # subtext0
-    focused_match:
-      foreground: "#1E1E2E" # base
-      background: "#A6E3A1" # green
-    footer_bar:
-      foreground: "#1E1E2E" # base
-      background: "#A6ADC8" # subtext0
+  # Adds this many blank pixels of padding around the window
+  padding:
+    x: 2
+    y: 0
 
-      # Keyboard regex hints
-  hints:
-    start:
-      foreground: "#1E1E2E" # base
-      background: "#F9E2AF" # yellow
-    end:
-      foreground: "#1E1E2E" # base
-      background: "#A6ADC8" # subtext0
-
-      # Selection colors
-  selection:
-    text: "#1E1E2E" # base
-    background: "#F5E0DC" # rosewater
-
-    # Normal colors
-  normal:
-    black: "#45475A" # surface1
-    red: "#F38BA8" # red
-    green: "#A6E3A1" # green
-    yellow: "#F9E2AF" # yellow
-    blue: "#89B4FA" # blue
-    magenta: "#F5C2E7" # pink
-    cyan: "#94E2D5" # teal
-    white: "#BAC2DE" # subtext1
-
-    # Bright colors
-  bright:
-    black: "#585B70" # surface2
-    red: "#F38BA8" # red
-    green: "#A6E3A1" # green
-    yellow: "#F9E2AF" # yellow
-    blue: "#89B4FA" # blue
-    magenta: "#F5C2E7" # pink
-    cyan: "#94E2D5" # teal
-    white: "#A6ADC8" # subtext0
-
-    # Dim colors
-  dim:
-    black: "#45475A" # surface1
-    red: "#F38BA8" # red
-    green: "#A6E3A1" # green
-    yellow: "#F9E2AF" # yellow
-    blue: "#89B4FA" # blue
-    magenta: "#F5C2E7" # pink
-    cyan: "#94E2D5" # teal
-    white: "#BAC2DE" # subtext1
-
-  indexed_colors:
-    - { index: 16, color: "#FAB387" }
-    - { index: 17, color: "#F5E0DC" }
+  # Window opacity as a floating point number from `0.0` to `1.0`.
+  # The value `0.0` is completely transparent and `1.0` is opaque.
+  # opacity: 0.8
 
 font:
   # Normal (roman) font face
@@ -116,21 +55,88 @@ font:
   # Point size of the font
   size: 14.0
 
-window:
-  # Window dimensions in character columns and lines
-  dimensions:
-    columns: 80
-    lines: 24
+colors:
+  primary:
+    background: "#1E1E2E" # base
+    foreground: "#CDD6F4" # text
+    # Bright and dim foreground colors
+    dim_foreground: "#CDD6F4" # text
+    bright_foreground: "#CDD6F4" # text
 
-  # Adds this many blank pixels of padding around the window
-  padding:
-    x: 2
-    y: 0
+  # Cursor colors
+  cursor:
+    text: "#1E1E2E" # base
+    cursor: "#F5E0DC" # rosewater
+  vi_mode_cursor:
+    text: "#1E1E2E" # base
+    cursor: "#B4BEFE" # lavender
 
-  # Window opacity as a floating point number from `0.0` to `1.0`.
-  # The value `0.0` is completely transparent and `1.0` is opaque.
-  # opacity: 0.8
+  # Search colors
+  search:
+    matches:
+      foreground: "#1E1E2E" # base
+      background: "#A6ADC8" # subtext0
+    focused_match:
+      foreground: "#1E1E2E" # base
+      background: "#A6E3A1" # green
+    footer_bar:
+      foreground: "#1E1E2E" # base
+      background: "#A6ADC8" # subtext0
 
-env:
-  # Fix font scaling
-  WINIT_X11_SCALE_FACTOR: "1.0"
+  # Keyboard regex hints
+  hints:
+    start:
+      foreground: "#1E1E2E" # base
+      background: "#F9E2AF" # yellow
+    end:
+      foreground: "#1E1E2E" # base
+      background: "#A6ADC8" # subtext0
+
+  # Selection colors
+  selection:
+    text: "#1E1E2E" # base
+    background: "#F5E0DC" # rosewater
+
+  # Normal colors
+  normal:
+    black: "#45475A" # surface1
+    red: "#F38BA8" # red
+    green: "#A6E3A1" # green
+    yellow: "#F9E2AF" # yellow
+    blue: "#89B4FA" # blue
+    magenta: "#F5C2E7" # pink
+    cyan: "#94E2D5" # teal
+    white: "#BAC2DE" # subtext1
+
+  # Bright colors
+  bright:
+    black: "#585B70" # surface2
+    red: "#F38BA8" # red
+    green: "#A6E3A1" # green
+    yellow: "#F9E2AF" # yellow
+    blue: "#89B4FA" # blue
+    magenta: "#F5C2E7" # pink
+    cyan: "#94E2D5" # teal
+    white: "#A6ADC8" # subtext0
+
+  # Dim colors
+  dim:
+    black: "#45475A" # surface1
+    red: "#F38BA8" # red
+    green: "#A6E3A1" # green
+    yellow: "#F9E2AF" # yellow
+    blue: "#89B4FA" # blue
+    magenta: "#F5C2E7" # pink
+    cyan: "#94E2D5" # teal
+    white: "#BAC2DE" # subtext1
+
+  indexed_colors:
+    - { index: 16, color: "#FAB387" }
+    - { index: 17, color: "#F5E0DC" }
+
+key_bindings:
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
