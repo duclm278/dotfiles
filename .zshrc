@@ -104,7 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR="nvim"
 # fi
-export EDITOR="nvim"
+export EDITOR="$HOME/.local/share/bob/nvim-bin/nvim"
+export SUDO_EDITOR="$HOME/.local/share/bob/nvim-bin/nvim"
+export VISUAL="$HOME/.local/share/bob/nvim-bin/nvim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
