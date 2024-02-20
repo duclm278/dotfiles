@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Xremap
+Name=Caffeine
 Type=Application
-Exec=systemctl --user start xremap
+Exec=caffeine-indicator
 Terminal=false
