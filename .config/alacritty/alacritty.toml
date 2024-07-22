@@ -107,6 +107,16 @@ key = "C"
 mods = "Control|Shift"
 
 [[keyboard.bindings]]
+action = "Paste"
+key = "Insert"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Insert"
+mods = "Control"
+
+[[keyboard.bindings]]
 action = "ResetFontSize"
 key = "Key0"
 mods = "Control"
