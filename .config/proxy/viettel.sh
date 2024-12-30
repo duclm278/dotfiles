@@ -1,8 +1,8 @@
-HTTP_PROXY=http://10.61.11.42:3128/
-HTTPS_PROXY=http://10.61.11.42:3128/
+HTTP_PROXY="http://10.61.11.42:3128/"
+HTTPS_PROXY="http://10.61.11.42:3128/"
 FTP_PROXY=
 SOCKS_PROXY=
-NO_PROXY=localhost,127.0.0.0/8,::1
+NO_PROXY="localhost,127.0.0.0/8,::1"
 https_proxy=${HTTPS_PROXY:-}
 https_proxy=${HTTPS_PROXY:-}
 ftp_proxy=${FTP_PROXY:-}

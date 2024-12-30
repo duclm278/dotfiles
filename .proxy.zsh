@@ -1,5 +1,5 @@
 save_proxy() {
-  local dest=~/.config/proxy/current.ini
+  local dest=~/.config/proxy/current.sh
   [[ $# -eq 1 ]] && dest="$1"
   $(which install) -D -m 664 /dev/null "$dest"
 
@@ -20,12 +20,12 @@ save_proxy() {
 
 set_proxy() {
   if [[ $# -eq 1 ]]; then
-    $(which install) -D -m 664 "$1" ~/.config/proxy/current.ini
+    $(which install) -D -m 664 "$1" ~/.config/proxy/current.sh
   fi
 
-  if [[ -f ~/.config/proxy/current.ini ]]; then
+  if [[ -f ~/.config/proxy/current.sh ]]; then
     set -o allexport
-    source ~/.config/proxy/current.ini
+    source ~/.config/proxy/current.sh
     set +o allexport
     save_proxy
   fi
