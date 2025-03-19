@@ -1,9 +1,10 @@
 #!/bin/env bash
 
 save_proxy() {
-  local dest="${1:-$HOME/.config/proxy/current.sh}"
-  [[ -L "${dest}" ]] && dest=$(readlink -f "${dest}")
-  install -D -m 664 /dev/null "${dest}"
+  local target="${1:-$HOME/.config/proxy/current.sh}"
+  local opened="${target}"
+  [[ -L "${opened}" ]] && opened=$(readlink -f "${opened}")
+  install -D -m 664 /dev/null "${opened}"
 
   {
     printf 'HTTP_PROXY="%s"\n' "${HTTP_PROXY}"
@@ -17,21 +18,20 @@ save_proxy() {
     printf 'ftp_proxy="${FTP_PROXY:-}"\n'
     printf 'socks_proxy="${SOCKS_PROXY:-}"\n'
     printf 'no_proxy="${NO_PROXY:-}"\n'
-  } >> "${dest}"
+  } >> "${opened}"
 
-  echo "Proxy settings saved to ${dest}"
+  echo "Proxy settings saved to ${target}"
 }
 
 set_proxy() {
-  local dest="$HOME/.config/proxy/current.sh"
-  [[ -L "${dest}" ]] && dest=$(readlink -f "${dest}")
+  local target="$HOME/.config/proxy/current.sh"
   if [[ $# -eq 1 ]]; then
-    install -D -m 664 "$1" "${dest}"
+    install -D -m 664 "$1" "${target}"
   fi
 
-  if [[ -f "${dest}" ]]; then
+  if [[ -f "${target}" ]]; then
     set -o allexport
-    source "${dest}"
+    source "${target}"
     set +o allexport
     save_proxy
   fi
@@ -63,21 +63,14 @@ set_proxy() {
     gsettings set org.gnome.system.proxy.socks port "$(echo "${SOCKS_PROXY}" | awk -F'[:/]' '{print $5}')"
   fi
 
-  # Remove square brackets
-  local NO_PROXY="${NO_PROXY:-}"
-  NO_PROXY="${NO_PROXY#\[}"
-  NO_PROXY="${NO_PROXY%\]}"
-
-  # Convert comma-separated values into array
-  local NO_ARRAY
-  IFS=',' 
-  for entry in ${NO_PROXY}; do
-    NO_ARRAY+=("${entry}")
-  done
-  JOINED=$(printf ",'%s'" "${NO_ARRAY[@]}")
-
   # NO_PROXY
-  gsettings set org.gnome.system.proxy ignore-hosts "[${JOINED:1}]"
+  local NO_ARRAY
+  IFS="," 
+  for entry in ${NO_PROXY}; do
+    NO_ARRAY+=("'${entry}'")
+  done
+  NO_ARRAY="${NO_ARRAY:1}"
+  gsettings set org.gnome.system.proxy ignore-hosts "[${NO_ARRAY}]"
 
   echo "Proxy settings set"
 }
@@ -96,7 +89,7 @@ unset_proxy() {
 
 sync_proxy() {
   # Check GNOME system proxy mode
-  local mode; mode=$(gsettings get org.gnome.system.proxy mode)
+  local mode=$(gsettings get org.gnome.system.proxy mode)
 
   if [[ "${mode}" == "'manual'" ]]; then
     # Extract proxy host and port values from gsettings
