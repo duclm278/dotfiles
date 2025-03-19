@@ -1,5 +1,3 @@
-#!/bin/env bash
-
 save_proxy() {
   local target="${1:-$HOME/.config/proxy/current.sh}"
   local opened="${target}"
@@ -37,6 +35,9 @@ set_proxy() {
   fi
 
   # Set GNOME system proxy settings
+  if [[ "${USE_GSETTINGS}" == false ]]; then
+    return
+  fi
   gsettings set org.gnome.system.proxy mode "manual"
 
   # HTTP_PROXY
@@ -65,10 +66,8 @@ set_proxy() {
 
   # NO_PROXY
   local NO_ARRAY
-  IFS="," 
-  for entry in ${NO_PROXY}; do
-    NO_ARRAY+=("'${entry}'")
-  done
+  IFS=',' read -A NO_ARRAY <<< "$NO_PROXY" # zsh only
+  NO_ARRAY=$(printf ",'%s'" "${NO_ARRAY[@]}")
   NO_ARRAY="${NO_ARRAY:1}"
   gsettings set org.gnome.system.proxy ignore-hosts "[${NO_ARRAY}]"
 
@@ -81,6 +80,9 @@ unset_proxy() {
   save_proxy
 
   # Unset GNOME system proxy settings
+  if [[ "${USE_GSETTINGS}" == false ]]; then
+    return
+  fi
   # gsettings reset-recursively org.gnome.system.proxy
   gsettings set org.gnome.system.proxy mode "none"
 
@@ -88,6 +90,10 @@ unset_proxy() {
 }
 
 sync_proxy() {
+  if [[ "${USE_GSETTINGS}" == false ]]; then
+    return
+  fi
+
   # Check GNOME system proxy mode
   local mode=$(gsettings get org.gnome.system.proxy mode)
 
@@ -145,4 +151,9 @@ sync_proxy() {
   fi
 }
 
+if command -v gsettings 2>&1 >/dev/null; then
+  USE_GSETTINGS=true
+else
+  USE_GSETTINGS=false
+fi
 sync_proxy >/dev/null 2>&1
