@@ -1,31 +1,37 @@
+#!/bin/env bash
+
 save_proxy() {
-  local dest=~/.config/proxy/current.sh
-  [[ $# -eq 1 ]] && dest="$1"
-  $(which install) -D -m 664 /dev/null "$dest"
+  local dest="${1:-$HOME/.config/proxy/current.sh}"
+  [[ -L "${dest}" ]] && dest=$(readlink -f "${dest}")
+  install -D -m 664 /dev/null "${dest}"
 
-  echo "HTTP_PROXY=${HTTP_PROXY:-}" >> "$dest"
-  echo "HTTPS_PROXY=${HTTPS_PROXY:-}" >> "$dest"
-  echo "FTP_PROXY=${FTP_PROXY:-}" >> "$dest"
-  echo "SOCKS_PROXY=${SOCKS_PROXY:-}" >> "$dest"
-  echo "NO_PROXY=${NO_PROXY:-}" >> "$dest"
+  {
+    printf 'HTTP_PROXY="%s"\n' "${HTTP_PROXY}"
+    printf 'HTTPS_PROXY="%s"\n' "${HTTPS_PROXY}"
+    printf 'FTP_PROXY="%s"\n' "${FTP_PROXY}"
+    printf 'SOCKS_PROXY="%s"\n' "${SOCKS_PROXY}"
+    printf 'NO_PROXY="%s"\n' "${NO_PROXY}"
 
-  echo "http_proxy=\${HTTP_PROXY:-}" >> "$dest"
-  echo "https_proxy=\${HTTPS_PROXY:-}" >> "$dest"
-  echo "ftp_proxy=\${FTP_PROXY:-}" >> "$dest"
-  echo "socks_proxy=\${SOCKS_PROXY:-}" >> "$dest"
-  echo "no_proxy=\${NO_PROXY:-}" >> "$dest"
+    printf 'http_proxy="${HTTP_PROXY:-}"\n'
+    printf 'https_proxy="${HTTPS_PROXY:-}"\n'
+    printf 'ftp_proxy="${FTP_PROXY:-}"\n'
+    printf 'socks_proxy="${SOCKS_PROXY:-}"\n'
+    printf 'no_proxy="${NO_PROXY:-}"\n'
+  } >> "${dest}"
 
-  echo "Proxy settings saved to $dest"
+  echo "Proxy settings saved to ${dest}"
 }
 
 set_proxy() {
+  local dest="$HOME/.config/proxy/current.sh"
+  [[ -L "${dest}" ]] && dest=$(readlink -f "${dest}")
   if [[ $# -eq 1 ]]; then
-    $(which install) -D -m 664 "$1" ~/.config/proxy/current.sh
+    install -D -m 664 "$1" "${dest}"
   fi
 
-  if [[ -f ~/.config/proxy/current.sh ]]; then
+  if [[ -f "${dest}" ]]; then
     set -o allexport
-    source ~/.config/proxy/current.sh
+    source "${dest}"
     set +o allexport
     save_proxy
   fi
@@ -34,38 +40,41 @@ set_proxy() {
   gsettings set org.gnome.system.proxy mode "manual"
 
   # HTTP_PROXY
-  if [[ -n "$HTTP_PROXY" ]]; then
-    gsettings set org.gnome.system.proxy.http host "$(echo "$HTTP_PROXY" | awk -F'[:/]' '{print $4}')"
-    gsettings set org.gnome.system.proxy.http port "$(echo "$HTTP_PROXY" | awk -F'[:/]' '{print $5}')"
+  if [[ -n "${HTTP_PROXY}" ]]; then
+    gsettings set org.gnome.system.proxy.http host "$(echo "${HTTP_PROXY}" | awk -F'[:/]' '{print $4}')"
+    gsettings set org.gnome.system.proxy.http port "$(echo "${HTTP_PROXY}" | awk -F'[:/]' '{print $5}')"
   fi
 
   # HTTPS_PROXY
-  if [[ -n "$HTTPS_PROXY" ]]; then
-    gsettings set org.gnome.system.proxy.https host "$(echo "$HTTPS_PROXY" | awk -F'[:/]' '{print $4}')"
-    gsettings set org.gnome.system.proxy.https port "$(echo "$HTTPS_PROXY" | awk -F'[:/]' '{print $5}')"
+  if [[ -n "${HTTPS_PROXY}" ]]; then
+    gsettings set org.gnome.system.proxy.https host "$(echo "${HTTPS_PROXY}" | awk -F'[:/]' '{print $4}')"
+    gsettings set org.gnome.system.proxy.https port "$(echo "${HTTPS_PROXY}" | awk -F'[:/]' '{print $5}')"
   fi
 
   # FTP_PROXY
-  if [[ -n "$FTP_PROXY" ]]; then
-    gsettings set org.gnome.system.proxy.ftp host "$(echo "$FTP_PROXY" | awk -F'[:/]' '{print $4}')"
-    gsettings set org.gnome.system.proxy.ftp port "$(echo "$FTP_PROXY" | awk -F'[:/]' '{print $5}')"
+  if [[ -n "${FTP_PROXY}" ]]; then
+    gsettings set org.gnome.system.proxy.ftp host "$(echo "${FTP_PROXY}" | awk -F'[:/]' '{print $4}')"
+    gsettings set org.gnome.system.proxy.ftp port "$(echo "${FTP_PROXY}" | awk -F'[:/]' '{print $5}')"
   fi
 
   # SOCKS_PROXY
-  if [[ -n "$SOCKS_PROXY" ]]; then
-    gsettings set org.gnome.system.proxy.socks host "$(echo "$SOCKS_PROXY" | awk -F'[:/]' '{print $4}')"
-    gsettings set org.gnome.system.proxy.socks port "$(echo "$SOCKS_PROXY" | awk -F'[:/]' '{print $5}')"
+  if [[ -n "${SOCKS_PROXY}" ]]; then
+    gsettings set org.gnome.system.proxy.socks host "$(echo "${SOCKS_PROXY}" | awk -F'[:/]' '{print $4}')"
+    gsettings set org.gnome.system.proxy.socks port "$(echo "${SOCKS_PROXY}" | awk -F'[:/]' '{print $5}')"
   fi
 
   # Remove square brackets
   local NO_PROXY="${NO_PROXY:-}"
-  NO_PROXY=${NO_PROXY#\[}
-  NO_PROXY=${NO_PROXY%\]}
+  NO_PROXY="${NO_PROXY#\[}"
+  NO_PROXY="${NO_PROXY%\]}"
 
   # Convert comma-separated values into array
-  local NO_PROXY_ARRAY=
-  IFS=',' read -A NO_PROXY_ARRAY <<< "$NO_PROXY"
-  JOINED=$(printf ",'%s'" "${NO_PROXY_ARRAY[@]}")
+  local NO_ARRAY
+  IFS=',' 
+  for entry in ${NO_PROXY}; do
+    NO_ARRAY+=("${entry}")
+  done
+  JOINED=$(printf ",'%s'" "${NO_ARRAY[@]}")
 
   # NO_PROXY
   gsettings set org.gnome.system.proxy ignore-hosts "[${JOINED:1}]"
@@ -78,7 +87,6 @@ unset_proxy() {
       http_proxy https_proxy ftp_proxy socks_proxy no_proxy
   save_proxy
 
-
   # Unset GNOME system proxy settings
   # gsettings reset-recursively org.gnome.system.proxy
   gsettings set org.gnome.system.proxy mode "none"
@@ -88,59 +96,59 @@ unset_proxy() {
 
 sync_proxy() {
   # Check GNOME system proxy mode
-  local mode=$(gsettings get org.gnome.system.proxy mode)
+  local mode; mode=$(gsettings get org.gnome.system.proxy mode)
 
-  if [[ "$mode" == "'manual'" ]]; then
+  if [[ "${mode}" == "'manual'" ]]; then
     # Extract proxy host and port values from gsettings
-    local HTTP_PROXY_HOST=$(gsettings get org.gnome.system.proxy.http host | tr -d "'")
-    local HTTP_PROXY_PORT=$(gsettings get org.gnome.system.proxy.http port | tr -d "'")
-    local HTTPS_PROXY_HOST=$(gsettings get org.gnome.system.proxy.https host | tr -d "'")
-    local HTTPS_PROXY_PORT=$(gsettings get org.gnome.system.proxy.https port | tr -d "'")
-    local FTP_PROXY_HOST=$(gsettings get org.gnome.system.proxy.ftp host | tr -d "'")
-    local FTP_PROXY_PORT=$(gsettings get org.gnome.system.proxy.ftp port | tr -d "'")
-    local SOCKS_PROXY_HOST=$(gsettings get org.gnome.system.proxy.socks host | tr -d "'")
-    local SOCKS_PROXY_PORT=$(gsettings get org.gnome.system.proxy.socks port | tr -d "'")
+    local HTTP_HOST=$(gsettings get org.gnome.system.proxy.http host | tr -d "'")
+    local HTTP_PORT=$(gsettings get org.gnome.system.proxy.http port | tr -d "'")
+    local HTTPS_HOST=$(gsettings get org.gnome.system.proxy.https host | tr -d "'")
+    local HTTPS_PORT=$(gsettings get org.gnome.system.proxy.https port | tr -d "'")
+    local FTP_HOST=$(gsettings get org.gnome.system.proxy.ftp host | tr -d "'")
+    local FTP_PORT=$(gsettings get org.gnome.system.proxy.ftp port | tr -d "'")
+    local SOCKS_HOST=$(gsettings get org.gnome.system.proxy.socks host | tr -d "'")
+    local SOCKS_PORT=$(gsettings get org.gnome.system.proxy.socks port | tr -d "'")
 
     # HTTP_PROXY
-    if [ -z "$HTTP_PROXY_HOST" ] || [ -z "$HTTP_PROXY_PORT" ]; then
+    if [[ -z "${HTTP_HOST}" || -z "${HTTP_PORT}" ]]; then
       HTTP_PROXY=""
     else
-      HTTP_PROXY="http://${HTTP_PROXY_HOST}:${HTTP_PROXY_PORT}/"
+      HTTP_PROXY="http://${HTTP_HOST}:${HTTP_PORT}/"
     fi
 
     # HTTPS_PROXY
-    if [ -z "$HTTPS_PROXY_HOST" ] || [ -z "$HTTPS_PROXY_PORT" ]; then
+    if [[ -z "${HTTPS_HOST}" || -z "${HTTPS_PORT}" ]]; then
       HTTPS_PROXY=""
     else
-      HTTPS_PROXY="http://${HTTPS_PROXY_HOST}:${HTTPS_PROXY_PORT}/"
+      HTTPS_PROXY="http://${HTTPS_HOST}:${HTTPS_PORT}/"
     fi
 
     # FTP_PROXY
-    if [ -z "$FTP_PROXY_HOST" ] || [ -z "$FTP_PROXY_PORT" ]; then
+    if [[ -z "${FTP_HOST}" || -z "${FTP_PORT}" ]]; then
       FTP_PROXY=""
     else
-      FTP_PROXY="http://${FTP_PROXY_HOST}:${FTP_PROXY_PORT}/"
+      FTP_PROXY="http://${FTP_HOST}:${FTP_PORT}/"
     fi
 
     # SOCKS_PROXY
-    if [ -z "$SOCKS_PROXY_HOST" ] || [ -z "$SOCKS_PROXY_PORT" ]; then
+    if [[ -z "${SOCKS_HOST}" || -z "${SOCKS_PORT}" ]]; then
       SOCKS_PROXY=""
     else
-      SOCKS_PROXY="http://${SOCKS_PROXY_HOST}:${SOCKS_PROXY_PORT}/"
+      SOCKS_PROXY="http://${SOCKS_HOST}:${SOCKS_PORT}/"
     fi
 
     # Pass proxy values to save_proxy
-    HTTP_PROXY="$HTTP_PROXY" \
-      HTTPS_PROXY="$HTTPS_PROXY" \
-      FTP_PROXY="$FTP_PROXY" \
-      SOCKS_PROXY="$SOCKS_PROXY" \
+    HTTP_PROXY="${HTTP_PROXY}" \
+      HTTPS_PROXY="${HTTPS_PROXY}" \
+      FTP_PROXY="${FTP_PROXY}" \
+      SOCKS_PROXY="${SOCKS_PROXY}" \
       NO_PROXY=$(gsettings get org.gnome.system.proxy ignore-hosts | tr -d "[]' ") \
       save_proxy >/dev/null 2>&1
     set_proxy
-  elif [[ "$mode" == "'none'" ]]; then
+  elif [[ "${mode}" == "'none'" ]]; then
     unset_proxy
   else
-    echo "Unknown proxy mode: $mode"
+    echo "Unknown proxy mode: ${mode}"
   fi
 }
 

@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -89,7 +89,7 @@ plugins=(
   helm
 )
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
@@ -123,7 +123,7 @@ export VISUAL="$HOME/.local/share/bob/nvim-bin/nvim"
 # Set up vi-mode
 ZVM_VI_EDITOR=nvim
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+ZVM_LINE_INIT_MODE="$ZVM_MODE_INSERT"
 
 # Set up fzf
 # [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
@@ -146,9 +146,6 @@ bindkey -M menuselect "l" vi-forward-char
 export FZF_DEFAULT_COMMAND="rg --files --hidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# Set up bob
-export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
-
 # Set up snap
 # export PATH="$PATH:/snap/bin"
 
@@ -170,6 +167,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Set up bob
+export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+
 # Set up cargo
 # export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -178,6 +178,9 @@ export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$P
 
 # Of g-install: do NOT edit, see https://github.com/stefanmaric/g
 alias ggovm="$GOPATH/bin/g";
+
+# Set up k8senv
+export PATH="$HOME/.k8senv/bin:$PATH"
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
