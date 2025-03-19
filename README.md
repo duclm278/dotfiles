@@ -16,5 +16,6 @@ stow -d $DOTFILES -t $HOME --adopt --no-folding .
 You can always return to the original state by running:
 
 ```shell
+DOTFILES=$HOME/Downloads/Repos/dotfiles
 stow -d $DOTFILES -t $HOME --adopt --no-folding -D . && rsync -avz --exclude ".git*" --exclude "*.md" $DOTFILES/ $HOME/
 ```
