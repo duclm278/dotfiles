@@ -35,7 +35,7 @@ set_proxy() {
   fi
 
   # Set GNOME system proxy settings
-  if [[ "${USE_GSETTINGS}" == false ]]; then
+  if [[ "${_sync_proxy_gsettings}" == false ]]; then
     return
   fi
   gsettings set org.gnome.system.proxy mode "manual"
@@ -80,7 +80,7 @@ unset_proxy() {
   save_proxy
 
   # Unset GNOME system proxy settings
-  if [[ "${USE_GSETTINGS}" == false ]]; then
+  if [[ "${_sync_proxy_gsettings}" == false ]]; then
     return
   fi
   # gsettings reset-recursively org.gnome.system.proxy
@@ -90,7 +90,7 @@ unset_proxy() {
 }
 
 sync_proxy() {
-  if [[ "${USE_GSETTINGS}" == false ]]; then
+  if [[ "${_sync_proxy_gsettings}" == false ]]; then
     return
   fi
 
@@ -151,9 +151,9 @@ sync_proxy() {
   fi
 }
 
-if command -v gsettings 2>&1 >/dev/null; then
-  USE_GSETTINGS=true
+if ! command -v gsettings >/dev/null 2>&1; then
+  _sync_proxy_gsettings=false
 else
-  USE_GSETTINGS=false
+  _sync_proxy_gsettings=true
 fi
 sync_proxy >/dev/null 2>&1

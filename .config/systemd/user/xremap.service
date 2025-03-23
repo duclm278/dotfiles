@@ -4,4 +4,3 @@ Description=xremap
 [Service]
 Restart=always
 ExecStart=/bin/sh -c "xremap %h/.config/xremap.yml --watch"
-
