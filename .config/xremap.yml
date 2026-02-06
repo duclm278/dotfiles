@@ -10,24 +10,24 @@ keymap:
       Super-k: Super-Up
       Super-l: Super-Right
       Super-Ctrl-z:
-        launch: [
-            "sh",
-            "-c",
-            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.Get",
-          ]
+        launch:
+          - "sh"
+          - "-c"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.Get"
+      Super-Shift-b:
+        launch: ["google-chrome", "--new-window"]
+      Super-Shift-f:
+        launch: ["nautilus", "--new-window"]
       Super-Shift-m:
-        launch: ["sh", "-c", "alacritty -e btop"]
+        launch: ["ghostty", "-e", "btop"]
       Super-Shift-q: Alt-F4
       Super-Shift-r:
         launch:
-          [
-            "sh",
-            "-c",
-            "systemctl daemon-reload && systemctl --user restart xremap",
-          ]
+          - "sh"
+          - "-c"
+          - "systemctl daemon-reload && systemctl --user restart xremap"
       Super-Shift-v:
-        launch: ["sh", "-c", "copyq toggle"]
+        launch: ["copyq", "toggle"]
 
   - name: Super
     exact_match: false
@@ -57,71 +57,53 @@ keymap:
     exact_match: true
     remap:
       Shift-Alt-1:
-        launch: [
-            "sh",
-            "-c",
-            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.MoveInWorkArea 10 10",
-          ]
+        launch:
+          - "sh"
+          - "-c"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.MoveInWorkArea 10 10"
       Shift-Alt-2:
-        launch: [
-            "sh",
-            "-c",
-            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.MoveInWorkArea 25 25",
-          ]
+        launch:
+          - "sh"
+          - "-c"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.MoveInWorkArea 25 25"
       Shift-Alt-5:
-        launch: [
-            "sh",
-            "-c",
-            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.MoveInWorkArea 50 50",
-          ]
+        launch:
+          - "sh"
+          - "-c"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.MoveInWorkArea 50 50"
       Shift-Alt-c:
-        launch: [
-            "sh",
-            "-c",
-            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.CenterInWorkArea",
-          ]
+        launch:
+          - "sh"
+          - "-c"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.CenterInWorkArea"
       Shift-Alt-f:
-        launch: [
-            "sh",
-            "-c",
-            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.Resize 890 550",
-          ]
+        launch:
+          - "sh"
+          - "-c"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.Resize 890 550"
       Shift-Alt-x:
-        launch: [
-            "sh",
-            "-c",
-            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.MoveResizeInWorkArea 16 16 1297 988",
-          ]
+        launch:
+          - "sh"
+          - "-c"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.MoveResizeInWorkArea 16 16 1297 988"
       Shift-Alt-b:
-        launch: [
-            "sh",
-            "-c",
-            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.Resize 1416 875",
-          ]
+        launch:
+          - "sh"
+          - "-c"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.Resize 1416 875"
       Shift-Alt-m:
-        launch: [
-            "sh",
-            "-c",
-            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.Resize 1214 750",
-          ]
+        launch:
+          - "sh"
+          - "-c"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.Resize 1214 750"
       Shift-Alt-s:
-        launch: [
-            "sh",
-            "-c",
-            "gdbus call --session --dest org.gnome.Shell --object-path /dev/duc/Sizer \
-            --method dev.duc.Sizer.Resize 1011 625",
-          ]
+        launch:
+          - "sh"
+          - "-c"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.Resize 1011 625"
 
   - name: Ctrl-Shift
     exact_match: true
     remap:
       Ctrl-Shift-Esc:
-        launch: ["sh", "-c", "alacritty -e btop"]
+        launch: ["ghostty", "-e", "btop"]
