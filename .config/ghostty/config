@@ -1,0 +1,6 @@
+theme = Catppuccin Mocha
+mouse-scroll-multiplier = 3
+window-height = 32
+window-width = 96
+copy-on-select = clipboard
+confirm-close-surface = false
