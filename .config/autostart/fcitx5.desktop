@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Fcitx 5
+Type=Application
+Exec=/usr/bin/fcitx5
+Terminal=false
