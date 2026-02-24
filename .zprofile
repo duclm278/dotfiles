@@ -5,7 +5,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 systemctl --user import-environment PATH
 
 # Fix theming
-export QT_QPA_PLATFORM="xcb"
+export QT_QPA_PLATFORM="wayland;xcb"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
