@@ -45,5 +45,5 @@ if command -v fcitx5 > /dev/null; then
     export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
     export SDL_IM_MODULE=fcitx
-    export GLFW_IM_MODULE=fcitx
+    export GLFW_IM_MODULE=ibus
 fi
