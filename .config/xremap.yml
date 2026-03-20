@@ -3,28 +3,6 @@ virtual_modifiers:
 modmap:
 keymap:
   - name: Super
-    exact_match: true
-    remap:
-      Super-h: Super-Left
-      Super-j: Super-Down
-      Super-k: Super-Up
-      Super-l: Super-Right
-      Super-Shift-b:
-        launch: ["google-chrome", "--new-window"]
-      Super-Shift-f:
-        launch: ["nautilus", "--new-window"]
-      Super-Shift-m:
-        launch: ["ghostty", "-e", "btop"]
-      Super-Shift-q: Alt-F4
-      Super-Shift-r:
-        launch:
-          - "sh"
-          - "-c"
-          - "systemctl daemon-reload && systemctl --user restart xremap"
-      Super-Shift-v:
-        launch: ["copyq", "toggle"]
-
-  - name: Super
     exact_match: false
     remap:
       Super-Ctrl-h: Super-PageUp
@@ -32,21 +10,66 @@ keymap:
       Super-Ctrl-l: Super-PageDown
       Super-Ctrl-Right: Super-PageDown
 
+  - name: Super
+    exact_match: true
+    remap:
+      Super-h: Super-Left
+      Super-j: Super-Down
+      Super-k: Super-Up
+      Super-l: Super-Right
+      Super-q: Alt-F4
+      Super-r:
+        launch:
+          - "sh"
+          - "-c"
+          - "systemctl daemon-reload && systemctl --user restart xremap"
+
+  - name: CapsLock
+    exact_match: false
+    remap:
+      CapsLock-h: Left
+      CapsLock-j: Down
+      CapsLock-k: Up
+      CapsLock-l: Right
+      CapsLock-KEY_COMMA: Home
+      CapsLock-KEY_DOT: End
+
   - name: CapsLock
     exact_match: true
     remap:
       CapsLock-LeftBrace: Esc
       CapsLock-Space: CapsLock
 
-  - name: CapsLock
-    exact_match: false
+  - name: CapsLock to run-or-rise
+    exact_match: true
     remap:
-      CapsLock-a: Home
-      CapsLock-e: End
-      CapsLock-h: Left
-      CapsLock-j: Down
-      CapsLock-k: Up
-      CapsLock-l: Right
+      CapsLock-q: [Super-f, q]
+      CapsLock-w: [Super-f, w]
+      CapsLock-e: [Super-f, e]
+      CapsLock-r: [Super-f, r]
+      CapsLock-a: [Super-f, a]
+      CapsLock-s: [Super-f, s]
+      CapsLock-d: [Super-f, d]
+      CapsLock-f: [Super-f, f]
+      CapsLock-z: [Super-f, z]
+      CapsLock-x: [Super-f, x]
+      CapsLock-c: [Super-f, c]
+      CapsLock-v: [Super-f, v]
+      CapsLock-Tab:
+        exact_match: true
+        remap:
+          q: [Super-f, Shift-q]
+          w: [Super-f, Shift-w]
+          e: [Super-f, Shift-e]
+          r: [Super-f, Shift-r]
+          a: [Super-f, Shift-a]
+          s: [Super-f, Shift-s]
+          d: [Super-f, Shift-d]
+          f: [Super-f, Shift-f]
+          z: [Super-f, Shift-z]
+          x: [Super-f, Shift-x]
+          c: [Super-f, Shift-c]
+          v: [Super-f, Shift-v]
 
   - name: Shift-Alt
     exact_match: true
@@ -55,17 +78,17 @@ keymap:
         launch:
           - "sh"
           - "-c"
-          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.MoveInWorkArea 15 15"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.MoveInWorkArea 25 25"
       Shift-Alt-2:
         launch:
           - "sh"
           - "-c"
-          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.MoveInWorkArea 25 25"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.MoveInWorkArea 50 50"
       Shift-Alt-3:
         launch:
           - "sh"
           - "-c"
-          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.MoveInWorkArea 35 35"
+          - "gdbus call -e -d org.gnome.Shell -o /dev/duc/Sizer -m dev.duc.Sizer.MoveInWorkArea 75 75"
       Shift-Alt-c:
         launch:
           - "sh"
