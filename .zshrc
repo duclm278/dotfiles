@@ -122,7 +122,7 @@ export VISUAL="$HOME/.local/share/bob/nvim-bin/nvim"
 
 # Set up vi-mode
 ZVM_VI_EDITOR=nvim
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+# ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 ZVM_LINE_INIT_MODE="$ZVM_MODE_INSERT"
 
 # Set up fzf
