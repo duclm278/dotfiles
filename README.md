@@ -7,7 +7,7 @@ Use `stow` to have bidirectional dotfiles (i.e., changes of tracked files in `$H
 ```shell
 DOTFILES=$HOME/.dotfiles
 mkdir -p $DOTFILES
-git clone https://github.com/duclm278/dotfiles.git $DOTFILES
+git clone https://github.com/ZHVj/dotfiles.git $DOTFILES
 
 sudo apt update && sudo apt install -y stow
 stow -d $DOTFILES -t $HOME --adopt --no-folding .
