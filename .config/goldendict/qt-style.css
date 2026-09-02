@@ -1,9 +1,3 @@
-MainWindow #translateLine, ScanPopup #translateLine, MainWindow #wordList, MainWindow #dictsPane #dictsList,
-MainWindow #historyPane #historyList, MainWindow #favoritesPane #favoritesTree
-{
-  background: white;
-}
-
 /* WARNING: hides all separators! */
 #navToolbar::separator {
   width: 0px;
@@ -37,7 +31,7 @@ MainWindow #historyPane #historyList, MainWindow #favoritesPane #favoritesTree
 
 /* Colored header for the "Found in Dictionaries:" pane */
 #dictsPaneTitleBar {
-  background: lightblue;
+  background: lightsteelblue;
   margin: 2px;
 }
 
