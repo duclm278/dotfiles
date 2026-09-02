@@ -104,9 +104,9 @@ source "$ZSH/oh-my-zsh.sh"
 # else
 #   export EDITOR="nvim"
 # fi
-export EDITOR="$HOME/.local/share/bob/nvim-bin/nvim"
-export SUDO_EDITOR="$HOME/.local/share/bob/nvim-bin/nvim"
-export VISUAL="$HOME/.local/share/bob/nvim-bin/nvim"
+export EDITOR="$HOME/.local/share/mise/installs/neovim/stable/bin/nvim"
+export SUDO_EDITOR="$HOME/.local/share/mise/installs/neovim/stable/bin/nvim"
+export VISUAL="$HOME/.local/share/mise/installs/neovim/stable/bin/nvim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -189,19 +189,8 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 
-# Set up bob
-export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
-
 # Set up cargo
 # export PATH="$HOME/.cargo/bin:$PATH"
 
-# Of g-install: do NOT edit, see https://github.com/stefanmaric/g
-export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH";
-
-# Of g-install: do NOT edit, see https://github.com/stefanmaric/g
-alias ggovm="$GOPATH/bin/g";
-
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-# [[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source ~/.sdkman/bin/sdkman-init.sh
-zvm_after_init_commands+=("[[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source ~/.sdkman/bin/sdkman-init.sh")
+# Set up mise
+eval "$("$HOME/.local/bin/mise" activate zsh)"
