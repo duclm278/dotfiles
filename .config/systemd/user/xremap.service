@@ -1,5 +1,5 @@
 [Unit]
-Description=xremap
+Description=Xremap
 
 [Service]
 Restart=always

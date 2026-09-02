@@ -1,0 +1,88 @@
+(platform (linux)
+  (defalias
+    ;; https://jtroo.github.io/config.html#_unmod
+    ;; Hold with rmet as lmet always fires in GNOME, which prevents unmod from working.
+    os-M (tap-hold-press 0 9999 lmet rmet)
+    os-A lalt
+    os-C lctl
+    os-S lsft
+
+    os-q (switch
+      ;; A-f4
+      ((and (or lmet rmet) (not lalt lctl lsft))) (unmod lalt f4) break
+      () q break
+    )
+    os-w w
+    os-e e
+    os-r (switch
+      ;; lrld
+      ((and (or lmet rmet) (not lalt lctl lsft))) lrld break
+      () r break
+    )
+    os-t t
+    os-y y
+    os-u u
+    os-i i
+    os-o o
+    os-p p
+
+    os-a a
+    os-s s
+    os-d d
+    os-f f
+    os-g g
+    os-h (switch
+      ;; M-▶
+      ((and (or lmet rmet) (not lalt lctl lsft))) ▶ break
+      ;; M-⇞
+      ((and (or lmet rmet) lctl)) (unmod (lctl) ⇞) break
+      () h break
+    )
+    os-j (switch
+      ;; M-▼
+      ((and (or lmet rmet) (not lalt lctl lsft))) ▼ break
+      () j break
+    )
+    os-k (switch
+      ;; M-▲
+      ((and (or lmet rmet) (not lalt lctl lsft))) ▲ break
+      () k break
+    )
+    os-l (switch
+      ;; M-◀
+      ((and (or lmet rmet) (not lalt lctl lsft))) ◀ break
+      ;; M-⇟
+      ((and (or lmet rmet) lctl)) (unmod (lctl) ⇟) break
+      () l break
+    )
+    os-; ;
+
+    os-z z
+    os-x x
+    os-c c
+    os-v v
+    os-b b
+    os-n n
+    os-m m
+    os-, ,
+    os-. .
+    os-/ /
+
+    os-␣ ␣
+
+    os-◀ (switch
+      ;; M-⇞
+      ((and (or lmet rmet) lctl)) (unmod (lctl) ⇞) break
+      () ◀ break
+    )
+    os-▼ ▼
+    os-▲ ▲
+    os-▶ (switch
+      ;; M-⇟
+      ((and (or lmet rmet) lctl)) (unmod (lctl) ⇟) break
+      () ▶ break
+    )
+    os-↖ ↖
+    os-↘ ↘
+  )
+)

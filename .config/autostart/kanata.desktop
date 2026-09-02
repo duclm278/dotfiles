@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Xremap
+Name=Kanata
 Type=Application
-Exec=systemctl --user start xremap
+Exec=systemctl --user start kanata
 Terminal=false
 X-GNOME-Autostart-enabled=false
