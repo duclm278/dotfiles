@@ -5,6 +5,7 @@
 
 (defcfg
   process-unmapped-keys yes
+  linux-dev-names-exclude ("Lotus-Uinput-Server")
 )
 
 (defsrc
