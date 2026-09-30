@@ -127,7 +127,8 @@ ZVM_LINE_INIT_MODE="$ZVM_MODE_INSERT"
 
 # Set up fzf
 # [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-zvm_after_init_commands+=("[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh")
+# zvm_after_init_commands+=("[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh")
+zvm_after_init_commands+=('command -v fzf >/dev/null && source <(fzf --zsh)')
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -193,4 +194,4 @@ unset __mamba_setup
 # export PATH="$HOME/.cargo/bin:$PATH"
 
 # Set up mise
-eval "$("$HOME/.local/bin/mise" activate zsh)"
+# eval "$("$HOME/.local/bin/mise" activate zsh)"

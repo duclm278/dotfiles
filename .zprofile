@@ -1,6 +1,11 @@
 # Set up cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Set up mise
+if [ -x "$HOME/.local/bin/mise" ]; then
+    eval "$("$HOME/.local/bin/mise" activate zsh)"
+fi
+
 # Make systemd aware of modified PATH
 systemctl --user import-environment PATH
 
