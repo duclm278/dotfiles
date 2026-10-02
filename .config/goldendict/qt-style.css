@@ -31,13 +31,11 @@
 
 /* Colored header for the "Found in Dictionaries:" pane */
 #dictsPaneTitleBar {
-  background: lightsteelblue;
   margin: 2px;
 }
 
 /* Colored header for the History Pane */
 #historyPaneTitleBar {
-  background: lightsteelblue;
   margin: 2px;
 }
 
