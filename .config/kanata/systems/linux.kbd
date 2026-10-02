@@ -32,8 +32,10 @@
     os-f f
     os-g g
     os-h (switch
-      ;; M-▶
-      ((and (or lmet rmet) (not lalt lctl lsft))) ▶ break
+      ;; M-◀
+      ((and (or lmet rmet) (not lalt lctl lsft))) ◀ break
+      ;; M-S-◀
+      ((and (or lmet rmet) (not lalt lctl))) ◀ break
       ;; M-⇞
       ((and (or lmet rmet) lctl)) (unmod (lctl) ⇞) break
       () h break
@@ -49,8 +51,10 @@
       () k break
     )
     os-l (switch
-      ;; M-◀
-      ((and (or lmet rmet) (not lalt lctl lsft))) ◀ break
+      ;; M-▶
+      ((and (or lmet rmet) (not lalt lctl lsft))) ▶ break
+      ;; M-S-▶
+      ((and (or lmet rmet) (not lalt lctl))) ▶ break
       ;; M-⇟
       ((and (or lmet rmet) lctl)) (unmod (lctl) ⇟) break
       () l break
