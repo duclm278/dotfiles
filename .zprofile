@@ -22,8 +22,3 @@ if command -v fcitx5 > /dev/null; then
   export SDL_IM_MODULE=fcitx
   export GLFW_IM_MODULE=ibus
 fi
-
-# Set up niri
-if [ "$XDG_CURRENT_DESKTOP" = "niri" ]; then
-  export QT_QPA_PLATFORMTHEME="gtk3"
-fi

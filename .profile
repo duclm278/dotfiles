@@ -41,7 +41,7 @@ systemctl --user import-environment PATH
 
 # fix theming
 export QT_QPA_PLATFORM="wayland;xcb"
-export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME="qt6ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # set up fcitx5
@@ -51,9 +51,4 @@ if command -v fcitx5 >/dev/null; then
   export XMODIFIERS=@im=fcitx
   export SDL_IM_MODULE=fcitx
   export GLFW_IM_MODULE=ibus
-fi
-
-# set up niri
-if [ "$XDG_CURRENT_DESKTOP" = "niri" ]; then
-  export QT_QPA_PLATFORMTHEME="gtk3"
 fi
