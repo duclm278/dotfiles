@@ -1,4 +1,6 @@
 {
+  "currentThemeName": "dynamic",
+  "currentThemeCategory": "dynamic",
   "cornerRadius": 12,
   "controlCenterShowMicPercent": true,
   "showWorkspaceIndex": true,
@@ -19,6 +21,7 @@
       "cursorHideTimeout": 0
     }
   },
+  "osdAlwaysShowValue": true,
   "osdPowerProfileEnabled": true,
   "barConfigs": [
     {
@@ -32,7 +35,10 @@
       "showOnLastDisplay": true,
       "leftWidgets": [
         "launcherButton",
-        "workspaceSwitcher",
+        {
+          "id": "workspaceSwitcher",
+          "enabled": false
+        },
         "focusedWindow"
       ],
       "centerWidgets": [
