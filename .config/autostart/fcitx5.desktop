@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Fcitx 5
+Type=Application
+Exec=sh -c "sleep 4; fcitx5"
+Terminal=false

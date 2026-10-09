@@ -1,0 +1,23 @@
+[tools]
+go = "latest"
+java = "lts"
+node = "lts"
+python = "latest"
+rust = "latest"
+
+fd = "latest"
+fzf = "latest"
+rg = "latest"
+stylua = "latest"
+
+helm = "latest"
+kind = "latest"
+kubectl = "latest"
+
+btop = "latest"
+neovim = "stable"
+yazi = "latest"
+tmux = "latest"
+
+lazydocker = "latest"
+lazygit = "latest"

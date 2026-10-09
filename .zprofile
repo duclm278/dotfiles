@@ -1,0 +1,24 @@
+# Set up cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Set up mise
+if [ -x "$HOME/.local/bin/mise" ]; then
+  eval "$("$HOME/.local/bin/mise" activate zsh)"
+fi
+
+# Make systemd aware of modified PATH
+systemctl --user import-environment PATH
+
+# Fix theming
+export QT_QPA_PLATFORM="wayland;xcb"
+export QT_QPA_PLATFORMTHEME="qt6ct"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+# Set up fcitx5
+if command -v fcitx5 > /dev/null; then
+  export GTK_IM_MODULE=fcitx
+  export QT_IM_MODULE=fcitx
+  export XMODIFIERS=@im=fcitx
+  export SDL_IM_MODULE=fcitx
+  export GLFW_IM_MODULE=ibus
+fi

@@ -1,0 +1,72 @@
+virtual_modifiers:
+  - CapsLock
+modmap:
+keymap:
+  - name: Super
+    exact_match: false
+    remap:
+      Super-Ctrl-h: Super-PageUp
+      Super-Ctrl-Left: Super-PageUp
+      Super-Ctrl-l: Super-PageDown
+      Super-Ctrl-Right: Super-PageDown
+
+  - name: Super
+    exact_match: true
+    remap:
+      Super-h: Super-Left
+      Super-j: Super-Down
+      Super-k: Super-Up
+      Super-l: Super-Right
+      Super-q: Alt-F4
+      Super-r:
+        launch:
+          - "sh"
+          - "-c"
+          - "systemctl daemon-reload && systemctl --user restart xremap"
+
+  - name: CapsLock
+    exact_match: false
+    remap:
+      CapsLock-h: Left
+      CapsLock-j: Down
+      CapsLock-k: Up
+      CapsLock-l: Right
+      CapsLock-KEY_COMMA: Home
+      CapsLock-KEY_DOT: End
+
+  - name: CapsLock
+    exact_match: true
+    remap:
+      CapsLock-LeftBrace: Esc
+      CapsLock-Space: CapsLock
+
+  - name: CapsLock to run-or-rise
+    exact_match: true
+    remap:
+      CapsLock-q: [Super-f, q]
+      CapsLock-w: [Super-f, w]
+      CapsLock-e: [Super-f, e]
+      CapsLock-r: [Super-f, r]
+      CapsLock-a: [Super-f, a]
+      CapsLock-s: [Super-f, s]
+      CapsLock-d: [Super-f, d]
+      CapsLock-f: [Super-f, f]
+      CapsLock-z: [Super-f, z]
+      CapsLock-x: [Super-f, x]
+      CapsLock-c: [Super-f, c]
+      CapsLock-v: [Super-f, v]
+      CapsLock-Tab:
+        exact_match: true
+        remap:
+          q: [Super-f, Shift-q]
+          w: [Super-f, Shift-w]
+          e: [Super-f, Shift-e]
+          r: [Super-f, Shift-r]
+          a: [Super-f, Shift-a]
+          s: [Super-f, Shift-s]
+          d: [Super-f, Shift-d]
+          f: [Super-f, Shift-f]
+          z: [Super-f, Shift-z]
+          x: [Super-f, Shift-x]
+          c: [Super-f, Shift-c]
+          v: [Super-f, Shift-v]

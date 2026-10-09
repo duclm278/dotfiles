@@ -1,0 +1,40 @@
+(deflayermap (caps)
+  ␣ ⇪
+  h @◀
+  j @▼
+  k @▲
+  l @▶
+  , @↖
+  . @↘
+
+  q (macro M-w q)
+  w (macro M-w w)
+  e (macro M-w e)
+  r (macro M-w r)
+  a (macro M-w a)
+  s (macro M-w s)
+  d (macro M-w d)
+  f (macro M-w f)
+  z (macro M-w z)
+  x (macro M-w x)
+  c (macro M-w c)
+  v (macro M-w v)
+
+  tab (layer-switch caps-tab)
+)
+
+(deflayermap (caps-tab)
+  q (multi (layer-switch base) (macro M-w S-q))
+  w (multi (layer-switch base) (macro M-w S-w))
+  e (multi (layer-switch base) (macro M-w S-e))
+  r (multi (layer-switch base) (macro M-w S-r))
+  a (multi (layer-switch base) (macro M-w S-a))
+  s (multi (layer-switch base) (macro M-w S-s))
+  d (multi (layer-switch base) (macro M-w S-d))
+  f (multi (layer-switch base) (macro M-w S-f))
+  z (multi (layer-switch base) (macro M-w S-z))
+  x (multi (layer-switch base) (macro M-w S-x))
+  c (multi (layer-switch base) (macro M-w S-c))
+  v (multi (layer-switch base) (macro M-w S-v))
+  _ (multi (layer-switch base) _)
+)

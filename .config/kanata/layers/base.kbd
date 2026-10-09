@@ -1,0 +1,90 @@
+;; https://github.com/urob/zmk-config#timeless-homerow-mods
+;; https://github.com/jtroo/kanata/pull/1781#issuecomment-3807843612
+(defvar
+  hold-time 300        ;; zmk's tapping-term-ms
+  tap-repress-time 175 ;; zmk's quick-tap-ms
+  idle-time 150        ;; zmk's require-prior-idle-ms
+
+  ltaps (q w e r t a s d f g)
+  lmods (z x c v b)
+  rtaps (y u i o p h j k l ;)
+  rmods (n m , . /)
+)
+
+(deflayer base
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     @q    @w    @e    @r    @t    @y    @u    @i    @o    @p    _     _     _
+  @⇪    @a    @s    @d    @f    @g    @h    @j    @k    @l    @;    _     _
+  @S    @z    @x    @c    @v    @b    @n    @m    @,    @.    @/    _     @▲
+  @C    @M    @A                @␣                _     _     _     @◀    @▼    @▶
+)
+
+(deflayer flow
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     @q    @w    @e    @r    @t    @y    @u    @i    @o    @p    _     _     _
+  _     @a    @s    @d    @f    @g    @h    @j    @k    @l    @;    _     _
+  _     z     x     c     v     b     n     m     ,     .     /     _     _
+  _     _     _                 @␣                _     _     _     _     _     _
+)
+
+(defvirtualkeys
+  to-base (layer-switch base)
+)
+
+(defalias
+  tap (multi
+    (layer-switch flow)
+    (on-idle $idle-time tap-vkey to-base)
+  )
+
+  ⇪ (layer-while-held caps)
+
+  M @os-M
+  A @os-A
+  C @os-C
+  S @os-S
+
+  z (tap-hold-release-tap-keys-release $tap-repress-time $hold-time (multi z @tap) @os-M $ltaps $lmods)
+  x (tap-hold-release-tap-keys-release $tap-repress-time $hold-time (multi x @tap) @os-A $ltaps $lmods)
+  c (tap-hold-release-tap-keys-release $tap-repress-time $hold-time (multi c @tap) @os-C $ltaps $lmods)
+  v (tap-hold-release-tap-keys-release $tap-repress-time $hold-time (multi v @tap) @os-S $ltaps $lmods)
+  b @os-b
+  n @os-n
+  m (tap-hold-release-tap-keys-release $tap-repress-time $hold-time (multi m @tap) @os-S $rtaps $rmods)
+  , (tap-hold-release-tap-keys-release $tap-repress-time $hold-time (multi , @tap) @os-C $rtaps $rmods)
+  . (tap-hold-release-tap-keys-release $tap-repress-time $hold-time (multi . @tap) @os-A $rtaps $rmods)
+  / (tap-hold-release-tap-keys-release $tap-repress-time $hold-time (multi / @tap) @os-M $rtaps $rmods)
+
+  q (fork @os-q (multi q @tap) ())
+  w (fork @os-w (multi w @tap) ())
+  e (fork @os-e (multi e @tap) ())
+  r (fork @os-r (multi r @tap) ())
+  t (fork @os-t (multi t @tap) ())
+  y (fork @os-y (multi y @tap) ())
+  u (fork @os-u (multi u @tap) ())
+  i (fork @os-i (multi i @tap) ())
+  o (fork @os-o (multi o @tap) ())
+  p (fork @os-p (multi p @tap) ())
+
+  a (fork @os-a (multi a @tap) ())
+  s (fork @os-s (multi s @tap) ())
+  d (fork @os-d (multi d @tap) ())
+  f (fork @os-f (multi f @tap) ())
+  g (fork @os-g (multi g @tap) ())
+  h (fork @os-h (multi h @tap) ())
+  j (fork @os-j (multi j @tap) ())
+  k (fork @os-k (multi k @tap) ())
+  l (fork @os-l (multi l @tap) ())
+  ; (fork @os-; (multi ; @tap) ())
+
+  ␣ (fork @os-␣ (multi ␣ @tap) ())
+
+  ◀ @os-◀
+  ▼ @os-▼
+  ▲ @os-▲
+  ▶ @os-▶
+  ↖ @os-↖
+  ↘ @os-↘
+)
