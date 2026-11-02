@@ -134,9 +134,6 @@ zvm_after_init_commands+=('command -v fzf >/dev/null && source <(fzf --zsh)')
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 zvm_after_init_commands+=("[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh")
 
-# Set up proxy
-zvm_after_init_commands+=("[[ -f ~/.proxy.zsh ]] && source ~/.proxy.zsh")
-
 # Set up yazi
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
