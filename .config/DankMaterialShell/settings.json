@@ -1,6 +1,4 @@
 {
-  "currentThemeName": "dynamic",
-  "currentThemeCategory": "dynamic",
   "cornerRadius": 12,
   "controlCenterShowMicPercent": true,
   "showWorkspaceIndex": true,
@@ -35,10 +33,7 @@
       "showOnLastDisplay": true,
       "leftWidgets": [
         "launcherButton",
-        {
-          "id": "workspaceSwitcher",
-          "enabled": false
-        },
+        "workspaceSwitcher",
         "focusedWindow"
       ],
       "centerWidgets": [
