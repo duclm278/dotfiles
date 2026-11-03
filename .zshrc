@@ -120,19 +120,26 @@ export VISUAL="$HOME/.local/share/mise/installs/neovim/stable/bin/nvim"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # Set up vi-mode
-ZVM_VI_EDITOR=nvim
-# ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-ZVM_LINE_INIT_MODE="$ZVM_MODE_INSERT"
+export ZVM_VI_EDITOR=nvim
+export ZVM_LINE_INIT_MODE="$ZVM_MODE_INSERT"
+
+# Use vi navigation keys in menu completion
+bindkey -M menuselect "h" vi-backward-char
+bindkey -M menuselect "j" vi-down-line-or-history
+bindkey -M menuselect "k" vi-up-line-or-history
+bindkey -M menuselect "l" vi-forward-char
 
 # Set up fzf
 # [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-# zvm_after_init_commands+=("[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh")
-zvm_after_init_commands+=('command -v fzf >/dev/null && source <(fzf --zsh)')
+zvm_after_init_commands+=("command -v fzf >/dev/null && source <(fzf --zsh)")
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-zvm_after_init_commands+=("[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh")
+# Set rg as default source for fzf
+export FZF_DEFAULT_COMMAND="rg --files --hidden"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Set up yazi
 function y() {
@@ -142,16 +149,6 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
-
-# Use vi navigation keys in menu completion
-bindkey -M menuselect "h" vi-backward-char
-bindkey -M menuselect "j" vi-down-line-or-history
-bindkey -M menuselect "k" vi-up-line-or-history
-bindkey -M menuselect "l" vi-forward-char
-
-# Set rg as default source for fzf
-export FZF_DEFAULT_COMMAND="rg --files --hidden"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Set up snap
 # export PATH="$PATH:/snap/bin"
@@ -186,9 +183,3 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
-
-# Set up cargo
-# export PATH="$HOME/.cargo/bin:$PATH"
-
-# Set up mise
-# eval "$("$HOME/.local/bin/mise" activate zsh)"
